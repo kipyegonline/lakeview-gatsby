@@ -37,7 +37,7 @@ const selectedStyle = {
 }
 
 export const AboutNav = ({ current, setCurrent }) => {
-  const w = document.documentElement.clientWidth
+  const w = globalThis.window && document.documentElement.clientWidth
   const style = {
     background: "purple",
     transition: "all .3s ease-in-out",
@@ -48,13 +48,15 @@ export const AboutNav = ({ current, setCurrent }) => {
   const handleClick = () => {
     window.scrollTo({ behavior: "smooth", top: 0 })
   }
+  let links = globalThis.window && document.querySelectorAll(".about-link")
   if (w < 480) {
-    const aboutLinks = document.querySelectorAll(".about-link")
+    const aboutLinks = [...links]
+
     aboutLinks.forEach(link => link.addEventListener("click", handleClick))
   }
   const handleMenu = (e, num) => {
     setCurrent(num)
-    const lis = [...document.querySelectorAll(".about-link")]
+    const lis = [...links]
     lis.forEach(li => li.classList.remove("highlight"))
     e.target.classList.add("higlight")
   }

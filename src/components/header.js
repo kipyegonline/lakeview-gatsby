@@ -6,14 +6,16 @@ import headersm from "../images/assets/img/2020/LAKEVIEW_SM.jpg.png"
 import { makeStyles } from "@material-ui/styles"
 
 const headerDims = () => {
-  let w = document.documentElement.clientWidth
-  if (w < 480) {
-    return headersm
-  } else if (w < 768) {
-    return headermd
-  } else {
-    return headerlg
-  }
+  
+    let w = globalThis.window && document.documentElement.clientWidth
+    if (w < 480) {
+      return headersm
+    } else if (w < 768) {
+      return headermd
+    } else {
+      return headerlg
+    }
+  
 }
 const navStyles = makeStyles({
   socials: {

@@ -13,6 +13,7 @@ The source code is available on [Github](https://www.github.com/kipyegonline/lak
 ### Author
 
 Vince Kipyegon [Vince](https://www.github.com/kipyegonline)
+
 [@kipyegonline](https://www.twitter.com/kipyegonline)
 
 ## 🚀 Quick start
@@ -25,7 +26,7 @@ This section provides guidelines on how to use initialize Gatsby js projects, co
 
     ```shell
     # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
+    run npm gatsby-cli -g
     ```
 
 1.  **Start developing.**
@@ -33,8 +34,11 @@ This section provides guidelines on how to use initialize Gatsby js projects, co
     Navigate into your new site’s directory and start it up.
 
     ```shell
-    cd my-default-starter/
-    gatsby develop
+    1. run npm install
+    ```
+
+
+    2. gatsby develop
     ```
 
 1.  **Open the source code and start editing!**
@@ -65,11 +69,16 @@ This section provides guidelines on how to use initialize Gatsby js projects, co
 
 - **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
+## Building
+
+Run gatsby build and project will automatically be built on a public folder if theres no err....
+
 ## 💫 Deployment
 
 The project is available on Netlify....
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://lakeview.netlify.com)
+
 And Lakeview AGC website.....
 [Lakeview](http://lakeviewagc.net)
 

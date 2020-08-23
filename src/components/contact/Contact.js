@@ -221,7 +221,7 @@ const GeneralInfo = () => (
 )
 
 function resizeMap() {
-  let w = document.documentElement.clientWidth
+  let w = globalThis.window && document.documentElement.clientWidth
   if (w <= 480) {
     return [380, 450]
   } else if (w <= 768) {

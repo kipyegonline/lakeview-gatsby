@@ -9,7 +9,7 @@ import YouTube from "@material-ui/icons/YouTube"
 import IG from "@material-ui/icons/Instagram"
 import Twitter from "@material-ui/icons/Twitter"
 
-import Header from "./ui/header/Header"
+import Header from "./header"
 import Footer from "./ui/footer/Footer"
 import Nav from "./ui/Nav/Nav"
 import { icons } from "./icons"
@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
       }
     }
   }
-  const smallScreen = document.documentElement.clientWidth
+  const smallScreen = globalThis.window && document.documentElement.clientWidth
   let arrowSize = smallScreen > 480 ? "2x" : "2x"
   if (smallScreen < 770) {
     window.onscroll = handleScroll
