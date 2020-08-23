@@ -1,0 +1,173 @@
+$secondary: #ddd;
+$footer: #ccc;
+@import "~bootstrap/scss/bootstrap";
+
+.footer-bg {
+  background: $footer;
+}
+.purped {
+  border-bottom: 1px solid rebeccapurple;
+}
+.weekly-events {
+  font-weight: bold;
+  font-size: 1rem;
+  border-collapse: separate;
+  max-width: 100%;
+  height: 400px;
+  background: white;
+  border-radius: 10px;
+  outline: none;
+}
+.card {
+  transform: rotateY(10deg);
+}
+h5 {
+  border-bottom: 1px solid purple;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  padding: 0.25rem;
+  margin: 0.5rem auto;
+  font-family: garamond georgia serif;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.mgn-bt {
+  border-bottom: 2px #ccc solid;
+}
+.banner {
+  background: rgb(166, 91, 216);
+  opacity: 0.85;
+  font-family: georgia;
+  margin-top: 0.5rem;
+}
+/* ministries scss*/
+
+.depa:hover {
+  box-shadow: 2px 2px 5px purple;
+  transform: scale(1);
+}
+.depa {
+  background: red;
+  z-index: 1000;
+  height: 350px;
+  width: 23%;
+}
+
+.cf::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .depa {
+    float: none;
+    width: 100%;
+    margin: auto;
+  }
+  .depa figure {
+    max-width: 100%;
+    margin: auto;
+  }
+  .acad-layout {
+    height: 200px;
+    margin-bottom: 0.25rem;
+  }
+}
+.current {
+  border: 1px solid red;
+}
+.bg-purple {
+  background: rgb(226, 18, 226);
+}
+
+@keyframes fare {
+  0% {
+    transform: translate(0px);
+    display: block;
+    color: red;
+  }
+
+  20% {
+    transform: translate(15px);
+    display: block;
+    color: red;
+  }
+  40% {
+    transform: translate(30px);
+    color: red;
+  }
+  50% {
+    transform: translate(45px);
+
+    color: red;
+  }
+  65% {
+    transform: translate(50px);
+    display: block;
+    color: red;
+  }
+  80% {
+    transform: translate(30px);
+    display: block;
+    color: red;
+  }
+  90% {
+    transform: translate(0px);
+    display: block;
+    color: red;
+  }
+  100% {
+    transform: translate(-1000px);
+
+    color: red;
+    font-weight: normal;
+  }
+}
+.transport {
+  animation: fare linear 3s 3 forwards alternate 2s;
+  transform: translate(-1000px);
+  font-weight: normal;
+  transition: transform ease-in-out 5s;
+}
+.fee {
+  background: #fff;
+  color: black;
+  font-weight: normal;
+  border-radius: 1rem;
+  box-shadow: -2px -2px 5px purple, 2px 2px 5px purple;
+}
+
+.fee:hover {
+  transform: rotate(-5deg);
+}
+
+.fellowship {
+  padding: 5px;
+  line-height: 1em;
+  font-size: 1.25rem;
+  font-family: times;
+
+  overflow-x: scroll;
+}
+.fellowship td,
+.fellowship th,
+tr {
+  border-collapse: collapse;
+  border: 1px solid gray;
+  padding: 10px;
+}
+.fellow-form {
+  font-family: helvetica;
+  font-size: 1rem;
+  padding: 1rem;
+  font-weight: bold;
+  outline: none;
+  border-radius: 1rem;
+  text-align: center;
+}
+.fellow-form:focus,
+.fellow-form:active {
+  border: 2px solid rgba(226, 37, 37, 0.7);
+  outline: none;
+}

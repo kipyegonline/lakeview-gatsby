@@ -1,0 +1,375 @@
+* {
+  box-sizing: border-box;
+}
+html {
+  background: #ccc;
+  position: relative;
+}
+
+body {
+  font-family: raleway, Helvetica, Arial, sans-serif;
+  width: 90%;
+  margin: 0 auto !important;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.89);
+
+  font-size: 1rem;
+}
+.jum {
+  background: #ddd;
+}
+.menu-icon {
+  transition: all 0.25s ease-in-out;
+}
+.banner {
+  background: white /*rgba(221, 221, 221, 0.525)*/;
+  font-weight: 200;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.text-heading {
+  font-family: "raleway", Helvetica, sans-serif;
+  /* "Times New Romans" serif"Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif*/
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 4rem;
+}
+.highlight {
+  border-bottom: 1px solid red;
+  background: purple;
+  border-radius: 5px;
+}
+.tagline-upper {
+  font-size: 5rem;
+  font-weight: normal;
+  line-height: 1;
+}
+
+.tagline-lower {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.text-expanded {
+  letter-spacing: 2px;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px #ddd;
+}
+
+.text-lg {
+  font-size: 1.25rem;
+}
+.top-header {
+  color: rgb(58, 56, 56);
+  font-weight: normal;
+}
+.bg-faded {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+.bg-faded-nav {
+  background-color: rgba(224, 36, 94, 0.9);
+} /* #007bfftwitter blue*/
+.bg-faded-purp {
+  background-color: #6f42c1;
+}
+
+.bg-faded-footer {
+  background-color: #6f42c1;
+}
+.bg-faded-footer p {
+  color: white;
+  font-weight: bold;
+}
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+hr.divider {
+  border-color: #292b2c;
+  max-width: 250px;
+}
+/*Nav */
+.nav-link {
+  font-size: 0.8rem;
+  font-weight: normal;
+  font-family: "raleway";
+}
+
+.map-container iframe {
+  pointer-events: none;
+}
+
+.map-container iframe.clicked {
+  pointer-events: auto;
+}
+#table td {
+  border: 1px solid black;
+  padding: 1px;
+  margin: 1px;
+  text-align: center;
+  background: rgb(230, 18, 230);
+  color: white;
+}
+#table th {
+  border: 1px solid black;
+  background-color: red;
+
+  padding: 1px;
+  margin: 1px;
+  text-align: center;
+}
+#comingUp td {
+  border: 2px solid black;
+  padding: 1px;
+  margin: 1px;
+  text-align: center;
+
+  color: black;
+}
+#comingUp th {
+  border: 2px solid black;
+  background-color: rgb(241, 31, 213);
+  color: black;
+  padding: 1px;
+  margin: 1px;
+  text-align: center;
+}
+.navbar .navbar-toggler {
+  color: white;
+  font-weight: bold;
+  border-color: white;
+}
+.navbar .navbar-toggler:hover {
+  color: #fff;
+}
+.nav-link {
+  padding: 0.5rem 0;
+}
+.nav-link:hover {
+  border: 1px solid purple;
+  border-radius: 16px;
+}
+.purple-border {
+  border-bottom: 1px purple solid;
+  position: relative;
+  top: 5px;
+}
+
+#brief {
+  display: none;
+}
+/*Theme,cccscripture*/
+.aste {
+  width: 100px;
+  height: 100px;
+  color: red;
+  font-size: 2rem;
+  transition: transform, 2s ease;
+  animation: aster 3s ease reverse 5s infinite;
+}
+.completed {
+  text-decoration: line-through red;
+}
+.script {
+  transition: transform 1s linear;
+  opacity: 0.7;
+
+  border-radius: 0.5rem;
+  margin-top: 0.5rem;
+  animation: theme 5s both 3s alternate 3;
+}
+.script:hover {
+  box-shadow: 2px 2px 2px #fff, -2px -2px 2px rgb(255, 255, 255);
+}
+
+/*About section*/
+
+.about-list {
+  list-style: none;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  background: cornflowerblue;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  align-content: flex-start;
+  line-height: 1em;
+  padding: 0.5rem;
+  margin: 0.5rem;
+}
+.about-routes {
+  position: relative;
+}
+.about-list li {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+}
+.about-list li a {
+  color: black;
+}
+.who-we-are {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+.who-we-are > p {
+  text-indent: 16px;
+  text-align: justify;
+}
+.about-link {
+  transition: all 0.3s ease-in-out;
+}
+
+/*Departments*/
+.main-lcc {
+  background: #ddd;
+  padding: 0rem;
+  margin: 1rem auto;
+}
+.main-lcc h5 {
+  font-family: "raleway";
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.main-lcc p,
+.main-lcc figure {
+  font-family: "raleway";
+}
+.lcc-main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: flex-end;
+}
+.lcc-member {
+  font-family: "raleway";
+  background: #ccc;
+  max-width: 300px;
+}
+.lcc-member img {
+  height: 200px;
+  max-width: 100%;
+}
+.navigation-arrow {
+  position: fixed;
+
+  visibility: hidden;
+  right: 3%;
+  transition: visibility 0.3s ease-in-out;
+}
+/*Estate lists*/
+.estate-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  font-size: 1rem;
+  align-content: flex-start;
+}
+.estate-list li {
+  width: 200px;
+  padding: 0.75rem;
+  margin: 5px 0;
+  height: 150px;
+}
+.estate-list li h5 {
+  font-weight: bold;
+}
+.estate-list li p,
+.estate-list li h5 {
+  padding: 0.5rem;
+  margin: 0;
+}
+
+@keyframes aster {
+  0% {
+    transform: scaleX(0);
+  }
+
+  50% {
+    transform: scaleX(1.5);
+  }
+
+  100% {
+    transform: scaleX(2);
+  }
+}
+@keyframes theme {
+  0% {
+    transform: translateX(0px);
+    opacity: 0.7.5;
+  }
+  50% {
+    transform: translateX(40px);
+    opacity: 0.85;
+  }
+
+  75% {
+    transform: translateX(70px);
+
+    opacity: 0.9;
+  }
+  90% {
+    transform: translateX(100px);
+
+    opacity: 0.9.6;
+  }
+  100% {
+    transform: translateX(0px);
+
+    opacity: 1;
+  }
+}
+
+/*Media queries*/
+/*mobile*/
+@media (max-width: 480px) {
+  /*about menu*/
+  .about-list {
+    list-style: none;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    background: cornflowerblue;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: space-between;
+    margin: 0 auto;
+    width: 100%;
+    transition: width 0.3s ease-in-out;
+    position: fixed;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+  }
+  .about-list li {
+    padding: 0.5rem 0;
+    border: none;
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .about-list {
+    list-style: none;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    background: cornflowerblue;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    align-content: flex-start;
+    line-height: 1em;
+    padding: 0.5rem;
+    margin: 0.5rem;
+  }
+}
+/*tablet*/

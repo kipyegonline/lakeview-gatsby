@@ -1,0 +1,109 @@
+
+html{
+  background: url('../assets/img/Background.jpg')  center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover; 
+}
+
+body {
+  font-family:  Helvetica, Arial, sans-serif;
+  background-color: beige;
+  margin: 0 auto
+  
+}
+
+h1, h2, h3, h4, h5, h6, .text-heading {
+  font-family: "Times New Romans" serif /*"Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif*/;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+.tagline-upper {
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.tagline-lower {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.text-expanded {
+  letter-spacing: 2px;
+}
+
+.text-shadow {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.text-lg {
+  font-size: 1.25rem;
+}
+
+.bg-faded {
+  background-color:rgba(255, 255, 255, 0.9);}
+.bg-faded-nav {background-color:rgba(224, 36, 94, 0.9);} /* #007bfftwitter blue*/
+.bg-faded-purp {background-color: #6f42c1;}
+
+.bg-faded-footer {background-color: #6f42c1;;}
+.bg-faded-footer p {
+  color: white;
+  font-weight: bold;
+}
+.bg-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+hr.divider {
+  border-color: #292b2c;
+  max-width: 250px;
+}
+
+.map-container iframe {
+  pointer-events: none;
+}
+
+.map-container iframe.clicked {
+  pointer-events: auto;
+}
+#table td {
+            border: 1px solid black; 
+            padding: 1px; margin: 1px;
+            text-align: center;
+            background:purple;
+            color:white; } 
+#table th 
+{ border: 1px solid black;
+ background-color:red; 
+ color:white;
+ padding: 1px; margin: 1px; 
+ text-align: center; }
+ #comingUp td {
+            border: 2px solid black; 
+            padding: 1px; margin: 1px;
+            text-align: center;
+            
+            color:black; } 
+#comingUp th 
+{ border: 2px solid black;
+ background-color:red; 
+ color:black;
+ padding: 1px; margin: 1px; 
+ text-align: center; }
+ .navbar .navbar-toggler {
+  color: white;
+  font-weight: bold;
+  border-color: white;
+ }
+ .navbar .navbar-toggler:hover {
+  background-color:red;
+  color:#fff;
+ }
+ #brief{
+   display: none;
+ }
