@@ -37,7 +37,11 @@ const selectedStyle = {
 }
 
 export const AboutNav = ({ current, setCurrent }) => {
-  const w = globalThis.window && document.documentElement.clientWidth
+  let w
+  if (window) {
+    w = document.documentElement.clientWidth
+  }
+
   const style = {
     background: "purple",
     transition: "all .3s ease-in-out",
@@ -48,7 +52,11 @@ export const AboutNav = ({ current, setCurrent }) => {
   const handleClick = () => {
     window.scrollTo({ behavior: "smooth", top: 0 })
   }
-  let links = globalThis.window && document.querySelectorAll(".about-link")
+  let links
+  if (window) {
+    links = document.querySelectorAll(".about-link")
+  }
+
   if (w < 480) {
     const aboutLinks = [...links]
 

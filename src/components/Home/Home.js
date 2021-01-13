@@ -2,10 +2,10 @@ import React from "react"
 import Carousel from "./carousel/Carousel"
 import Intro from "./intro/Intro"
 
-const Home = ({ carosel, events, churcharea }) => (
+const Home = ({ carosel, events, churcharea, fast = {}, getDate = f => f }) => (
   <div className="p-2">
     <Carousel carosel={carosel} />
-    <Intro churcharea={churcharea} />
+    <Intro churcharea={churcharea} fast={fast} getDate={getDate} />
   </div>
 )
 export default Home

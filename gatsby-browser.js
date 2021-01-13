@@ -7,6 +7,7 @@
 // You can delete this file if you're not using it
 
 import "./src/css/lakeview.css"
+import "./src/css/tailwind.css"
 import "./src/scss/lakeview.scss"
 import "mdbootstrap/css/mdb.min.css"
 import "typeface-raleway"

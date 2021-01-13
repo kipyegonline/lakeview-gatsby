@@ -334,7 +334,11 @@ const FeedBack = () => (
 )
 
 function adjustHeight() {
-  const w = globalThis.window && document.documentElement.clientWidth
+  let w
+  if (window !== undefined) {
+    w = document.documentElement.clientWidth
+  }
+
   if (w <= 480) {
     return 100
   } else if (w < 768) {

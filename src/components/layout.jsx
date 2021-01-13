@@ -32,16 +32,19 @@ const Layout = ({ children }) => {
       }
     }
   }
-  const smallScreen = globalThis.window && document.documentElement.clientWidth
-  let arrowSize = smallScreen > 480 ? "2x" : "2x"
-  if (smallScreen < 770) {
-    window.onscroll = handleScroll
+  let arrowSize
+  if (window !== undefined) {
+    const smallScreen = document.documentElement.clientWidth
+    arrowSize = smallScreen > 480 ? "2x" : "2x"
+    if (smallScreen < 770) {
+      window.onscroll = handleScroll
+    }
   }
 
   React.useEffect(() => {
     let timer = setTimeout(() => showSocials(true), 5000)
     library.add(...icons)
-    console.log("Layou loaded")
+
     return () => clearTimeout(timer)
   }, [])
 

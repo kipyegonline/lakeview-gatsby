@@ -153,6 +153,7 @@ hr.divider {
 }
 .nav-link {
   padding: 0.5rem 0;
+  font-family: roboto;
 }
 .nav-link:hover {
   border: 1px solid purple;
