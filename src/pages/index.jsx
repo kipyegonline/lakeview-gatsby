@@ -1,5 +1,5 @@
 import React from "react"
-
+import { v4 } from "uuid"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Home from "../components/Home/Home"
@@ -11,9 +11,8 @@ import {
   DialogContent,
   Typography,
   Button,
+  DialogTitle,
 } from "@material-ui/core"
-import { DateRangeRounded } from "@material-ui/icons"
-import { DatePicker } from "antd"
 
 const faux = {
   id: 1,
@@ -24,21 +23,35 @@ const faux = {
   date: "2021-01-11",
 }
 const IndexPage = () => {
+  const date = "2021-01-" + new Date().getDate()
   const [fast, setFast] = React.useState({})
   const [fasts, setFasts] = React.useState([])
+  const [welcome, setWelcome] = React.useState("")
   const [open, setOpen] = React.useState(false)
+  const [selected, setSelected] = React.useState(date)
 
-  const date = "2021-01-" + new Date().getDate()
   const fetchData = async (url, callback) => {
     try {
       let fast = await fetch(url)
       fast = await fast.json()
-
-      callback(fast)
+      setTimeout(() => callback(fast), 2000)
     } catch (error) {
       callback({ id: 0 })
     }
   }
+  const handleUserCount = isNew => {
+    let localUser = localStorage.getItem("localuser")
+
+    if (!localUser) {
+      localStorage.setItem("localuser", v4())
+      localUser = localStorage.getItem("localuser")
+    }
+
+    fetch(
+      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`
+    )
+  }
+
   const handleUserDate = e => {
     const val = e.target.value
 
@@ -46,69 +59,87 @@ const IndexPage = () => {
       alert("21 days of fasting runs between January 11th and January 31st")
     } else {
       setFast({})
+      setSelected(val)
       let url1 = `./server/fasting.php?getfast=true&day=${val}`
+
       fetchData(url1, setFast)
     }
   }
 
   const showNotifications = date => {
+    if (new Date().getMonth() > 0) return
     let prayerday = localStorage.getItem("prayerday")
+
     if (prayerday) {
+      setWelcome("")
       if (prayerday !== date) {
         localStorage.setItem("prayerday", date)
         setTimeout(() => setOpen(true), 5000)
+        handleUserCount(0)
       }
     } else {
       // also record on server...
+      handleUserCount(1)
+
       // show dialog
       localStorage.setItem("prayerday", date)
       setTimeout(() => setOpen(true), 5000)
+      setWelcome("Welcome to Lakeview AGC website.")
     }
   }
   React.useEffect(() => {
     let url1 = `./server/fasting.php?getfast=true&day=${date}`
     let url2 = `./server/fasting.php?getfasts=true`
-    showNotifications(date)
-    fetchData(url1, setFast)
-    fetchData(url2, setFasts)
+    if (!!!fasts.length) {
+      showNotifications(date)
+      fetchData(url1, setFast)
+      fetchData(url2, setFasts)
+    }
   }, [])
 
   return (
     <Layout>
       <SEO title="Home | Lakeview AGC -section 58 | 2021" />
 
-      <UseModal open={open} setOpen={setOpen}>
-        <Fasting />
+      <UseModal open={open} setOpen={setOpen} welcome={welcome}>
+        <Fasting {...fast} getDate={handleUserDate} selected={selected} />
       </UseModal>
       <Home
         carosel={carosel}
         churcharea={smallSlides}
         fast={fast}
+        selected={selected}
         getDate={handleUserDate}
       />
-      <DatePicker />
     </Layout>
   )
 }
 
 export default IndexPage
+
 const UseModal = ({
   children,
-  title = "21 days of prayer and fasting.",
+  title = "21 Days of Prayer and Fasting.",
   open = false,
   setOpen,
+  welcome,
 }) => {
   return (
-    <Dialog title={title} open={open}>
-      <DialogContent>
-        <Typography>Cook da food...</Typography>
-        {children}
-      </DialogContent>
+    <Dialog
+      title={title}
+      open={open}
+      onClose={() => setOpen(false)}
+      fullWidth
+      maxWidth="sm"
+    >
+      <DialogTitle>{welcome}</DialogTitle>
+      <DialogContent dividers>{children}</DialogContent>
       <DialogActions>
         <Button
           variant="contained"
           color="primary"
           onClick={() => setOpen(false)}
+          autoFocus
         >
           Close
         </Button>

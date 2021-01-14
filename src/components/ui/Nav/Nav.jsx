@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { Typography, IconButton } from "@material-ui/core"
+import { Typography, IconButton, AppBar } from "@material-ui/core"
 import { Link as NavLink } from "gatsby"
 import $ from "jquery"
 import Home from "@material-ui/icons/School"
@@ -25,7 +25,7 @@ const Nav = ({ match }) => {
 
   return (
     <nav
-      className="navbar navbar-expand-lg navbar-light  py-lg-2 mt-2"
+      className="navbar navbar-expand-lg navbar-light  py-lg-2 mt-2 d"
       style={{ borderBottom: "1px solid red" }}
     >
       <div className="container">
@@ -88,7 +88,7 @@ const Nav = ({ match }) => {
                 to={"/our-ministries"}
               >
                 <FontAwesomeIcon size="lg" className="mr-2" icon="users" />
-                LCC
+                Ministries
               </NavLink>
             </li>
             <li className="nav-item px-lg-2">
@@ -98,7 +98,7 @@ const Nav = ({ match }) => {
                 to={"/services"}
               >
                 <FontAwesomeIcon size="lg" className="mr-2" icon="school" />
-                Services
+                Sermons
               </NavLink>
             </li>
 
@@ -109,7 +109,7 @@ const Nav = ({ match }) => {
                 to={"/home-fellowship-and-bible-study"}
               >
                 <FontAwesomeIcon size="lg" className="mr-2" icon="bible" />
-                Home Fellowship
+                Disclipleship
               </NavLink>
             </li>
 
@@ -134,7 +134,7 @@ const Nav = ({ match }) => {
                   className="mr-2"
                   icon="address-book"
                 />
-                GET IN TOUCH
+                Contact Us
               </NavLink>
             </li>
 

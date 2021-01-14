@@ -1,11 +1,28 @@
 import React from "react"
-import Carousel from "./carousel/Carousel"
+import Carousel, { ReactSlider } from "./carousel/Carousel"
 import Intro from "./intro/Intro"
 
-const Home = ({ carosel, events, churcharea, fast = {}, getDate = f => f }) => (
+const Home = ({
+  carosel,
+  events,
+  churcharea,
+  fast = {},
+  getDate = f => f,
+  selected,
+}) => (
   <div className="p-2">
-    <Carousel carosel={carosel} />
-    <Intro churcharea={churcharea} fast={fast} getDate={getDate} />
+    {/*<Carousel carosel={carosel} />*/}
+    <div style={{ maxHeight: 403, overflow: "hidden" }}>
+      {" "}
+      <ReactSlider carousels={carosel} />
+    </div>
+
+    <Intro
+      churcharea={churcharea}
+      fast={fast}
+      getDate={getDate}
+      selected={selected}
+    />
   </div>
 )
 export default Home

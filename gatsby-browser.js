@@ -5,7 +5,8 @@
  */
 
 // You can delete this file if you're not using it
-
+import "slick-carousel/slick/slick.css"
+import "slick-carousel/slick/slick-theme.css"
 import "./src/css/lakeview.css"
 import "./src/css/tailwind.css"
 import "./src/scss/lakeview.scss"

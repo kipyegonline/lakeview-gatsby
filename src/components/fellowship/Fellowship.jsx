@@ -20,6 +20,7 @@ export default class Fellowship extends React.Component {
       searched: false,
       search: [],
       keyword: "",
+      selected: 0,
       random: "Lakeview AGC",
     }
     this.colors = [
@@ -34,6 +35,7 @@ export default class Fellowship extends React.Component {
     this.chooseBg = this.chooseBg.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClick = this.handleClick.bind(this)
+    this.handleHover = this.handleHover.bind(this)
     this.keyword = React.createRef()
     this.current = 0
   }
@@ -67,9 +69,12 @@ export default class Fellowship extends React.Component {
     this.setState({ random: arr[this.current].estate })
     this.current++
   }
+  handleHover(index) {
+    this.setState({ selected: index })
+  }
 
   render() {
-    const { estate, searched, search, keyword, random } = this.state
+    const { estate, selected, searched, search, keyword, random } = this.state
 
     return (
       <>
@@ -89,8 +94,12 @@ export default class Fellowship extends React.Component {
         <Grid>
           <Typography className="text-center p-2"> Estate list</Typography>
           <Paper elevation={10}>
-            <TableContainer className="table-repsonsive">
-              <Table className="table table-hover ">
+            <TableContainer className="table-repsonsive p-4">
+              <Table
+                className="table table-hover "
+                size="small"
+                padding="checkbox"
+              >
                 <TableHead>
                   <TableCell>#</TableCell>
                   <TableCell>Estate</TableCell>
@@ -99,7 +108,13 @@ export default class Fellowship extends React.Component {
                 </TableHead>
                 <TableBody>
                   {estate.map((est, i) => (
-                    <TableList key={i} {...est} index={i} />
+                    <TableList
+                      key={i}
+                      {...est}
+                      selected={selected}
+                      handleHover={() => this.handleHover(i)}
+                      index={i}
+                    />
                   ))}
                 </TableBody>
               </Table>
@@ -121,8 +136,8 @@ function capitalize(word) {
   return newword.join(" ")
 }
 
-const TableList = ({ estate, leader, phone, index }) => (
-  <TableRow>
+const TableList = ({ estate, leader, phone, selected, index, handleHover }) => (
+  <TableRow hover onMouseOver={handleHover} selected={index === selected}>
     <TableCell>{index + 1}</TableCell>
     <TableCell align="left">{estate}</TableCell>
     <TableCell align="left">{leader}</TableCell>

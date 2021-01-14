@@ -7,7 +7,7 @@ html {
 }
 
 body {
-  font-family: raleway, Helvetica, Arial, sans-serif;
+  font-family: roboto, Helvetica, Arial, sans-serif;
   width: 90%;
   margin: 0 auto !important;
   padding: 1rem;
@@ -33,7 +33,7 @@ h4,
 h5,
 h6,
 .text-heading {
-  font-family: "raleway", Helvetica, sans-serif;
+  font-family: "roboto", Helvetica, sans-serif;
   /* "Times New Romans" serif"Josefin Slab", "Helvetica Neue", Helvetica, Arial, sans-serif*/
   font-weight: 400;
 }
@@ -101,7 +101,7 @@ hr.divider {
 .nav-link {
   font-size: 0.8rem;
   font-weight: normal;
-  font-family: "raleway";
+  font-family: "roboto";
 }
 
 .map-container iframe {
@@ -374,3 +374,11 @@ hr.divider {
   }
 }
 /*tablet*/
+.slick-prev {
+  left: 3% !important;
+  z-index: 1;
+}
+.slick-next {
+  right: 3% !important;
+  z-index: 1;
+}
