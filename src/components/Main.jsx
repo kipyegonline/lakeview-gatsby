@@ -35,19 +35,21 @@ import molly from "../images/assets/img/2019/molly.jpg"
 import guitar from "../images/assets/img/2019/dec/kitetu.jpg"
 import drummer from "../images/assets/img/2019/drummer.jpg"
 import bridgers from "../images/assets/img/2019/bridgers.jpg"
+import fastingwide from "../images/assets/img/2021/fastingwide.png"
+import theme from "../images/assets/img/2021/theme.png"
 
 export const smallSlides = [churcharea, slide7, slide6, slide8]
 
 export const carosel = [
   {
-    pic: slide1,
+    pic: fastingwide,
     picMd: slide1md,
     picSm: slide1sm,
-    caption: "Lakeview Africa Gospel Church",
+    caption: "21 days of prayer and fasting",
     active: true,
   },
   {
-    pic: slide2,
+    pic: theme,
     picMd: slide2md,
     picSm: slide2sm,
     caption: "Praise and Worship",
@@ -61,7 +63,7 @@ export const carosel = [
     active: false,
   },
   {
-    pic: slide4,
+    pic: slide4md,
     picMd: slide4md,
     picSm: slide4sm,
     caption: "Thanksgiving Sunday",

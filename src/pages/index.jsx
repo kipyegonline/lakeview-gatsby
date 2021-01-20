@@ -72,9 +72,10 @@ const IndexPage = () => {
 
     if (prayerday) {
       setWelcome("")
+
       if (prayerday !== date) {
         localStorage.setItem("prayerday", date)
-        setTimeout(() => setOpen(true), 5000)
+        setTimeout(() => setOpen(true), 10000)
         handleUserCount(0)
       }
     } else {
@@ -83,7 +84,7 @@ const IndexPage = () => {
 
       // show dialog
       localStorage.setItem("prayerday", date)
-      setTimeout(() => setOpen(true), 5000)
+      setTimeout(() => setOpen(true), 10000)
       setWelcome("Welcome to Lakeview AGC website.")
     }
   }
@@ -96,7 +97,9 @@ const IndexPage = () => {
       fetchData(url2, setFasts)
     }
   }, [])
-
+  React.useLayoutEffect(() => {
+    console.log("prime")
+  }, [])
   return (
     <Layout>
       <SEO title="Home | Lakeview AGC -section 58 | 2021" />

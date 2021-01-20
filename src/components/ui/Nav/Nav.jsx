@@ -2,9 +2,11 @@ import React, { useState } from "react"
 import { Typography, IconButton, AppBar } from "@material-ui/core"
 import { Link as NavLink } from "gatsby"
 import $ from "jquery"
-import Home from "@material-ui/icons/School"
+import HomeIcon from "@material-ui/icons/Home"
+import SchoolIcon from "@material-ui/icons/School"
 import Close from "@material-ui/icons/Close"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { SpeakerNotes } from "@material-ui/icons"
 
 const style = {
   color: "red",
@@ -64,7 +66,7 @@ const Nav = ({ match }) => {
                 className="nav-link text-uppercase  text-expanded"
                 to={"/"}
               >
-                <FontAwesomeIcon className="mr-2" size="lg" icon="home" />
+                <HomeIcon />
               </NavLink>
             </li>
             <li className="nav-item px-lg-2 ">
@@ -97,7 +99,7 @@ const Nav = ({ match }) => {
                 className="nav-link text-uppercase text-expanded "
                 to={"/services"}
               >
-                <FontAwesomeIcon size="lg" className="mr-2" icon="school" />
+                <SpeakerNotes size="small" />
                 Sermons
               </NavLink>
             </li>
@@ -117,16 +119,6 @@ const Nav = ({ match }) => {
               <NavLink
                 activeStyle={style}
                 className="nav-link text-uppercase text-expanded "
-                to={"/lakeview-academy"}
-              >
-                <Home size="small" className="mr-2" />
-                <span>LakeView Academy</span>
-              </NavLink>
-            </li>
-            <li className="nav-item px-lg-2">
-              <NavLink
-                activeStyle={style}
-                className="nav-link text-uppercase text-expanded "
                 to={"/get-in-touch"}
               >
                 <FontAwesomeIcon
@@ -139,19 +131,17 @@ const Nav = ({ match }) => {
             </li>
 
             <li className="nav-item px-lg-2">
-              <a
-                className="nav-link text-uppercase red lighten-2 text-white  text-expanded "
-                style={{ borderRadius: 5 }}
-                onClick={() => handleModal()}
-                id="give"
+              <NavLink
+                activeStyle={style}
+                className="nav-link text-uppercase text-expanded "
+                to={"/lakeview-academy"}
               >
-                <FontAwesomeIcon
-                  size="lg"
-                  className="mr-2"
-                  icon="hands-helping"
-                />
-                Give
-              </a>
+                <IconButton color="secondary" size="small" className="m-0 p-0">
+                  {" "}
+                  <SchoolIcon size="small" className="mr-2" />
+                  Lakeview Academy
+                </IconButton>
+              </NavLink>
             </li>
           </ul>
         </div>

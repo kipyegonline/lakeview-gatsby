@@ -59,7 +59,7 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
         </Grid>
 
         {/* grid 2*/}
-        <Grid className=" mr-2    my-2  p-2 mb-1 " xs={12} md={4} lg={4} item>
+        <Grid className=" mr-2    my-2  p-2 mt-2 " xs={12} md={4} lg={4} item>
           <Card className="p-1">
             <Typography className=" r mb-2">
               <strong>
@@ -255,7 +255,7 @@ export const Fasting = ({
     />
   )
   const dayz = {
-    background: "rgba(0,0,0,.5)",
+    background: "rgba(0,0,0,.75)",
     color: "white",
     padding: 10,
     borderRadius: "60%",
@@ -291,7 +291,7 @@ export const Fasting = ({
       />
 
       <CardContent className=" my-1 p-3">
-        <Box className="w-50 float-right">
+        <Box className=" floater">
           <CardMedia
             component="img"
             src={fasting}

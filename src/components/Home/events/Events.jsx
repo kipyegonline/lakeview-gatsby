@@ -25,6 +25,7 @@ import Calendar from "@material-ui/icons/CalendarToday"
 import User from "@material-ui/icons/AccountCircle"
 
 import give from "../../../images/assets/img/PAYBILL.jpg"
+import coop from "../../../images/assets/img/bankAccount.jpg"
 import delton from "../../../images/assets/img/pstdelton.jpg"
 import jp from "../../../images/assets/img/newlcc/jp_psd.jpg"
 import harry from "../../../images/assets/img/2019/harry.jpg"
@@ -238,25 +239,24 @@ export const QuickContacts = () => (
   </Paper>
 )
 export const Give = () => {
-  function handleModal() {
-    $("#giveModal").modal({
-      show: true,
-      keyboard: true,
-    })
-  }
   return (
     <Box className="mx-auto ">
       {" "}
       {/*Give*/}
       <h5 className="text-center text-uppercase pt-2 font-weight-bold">Give</h5>
       <Divider />
-      <img className="img-fluid mb-1 mb-lg-0" src={give} alt="M-Pesa paybill" />
-      <small
-        className="btn btn-primary btn-block mb-2"
-        onClick={() => handleModal()}
-      >
-        More Options
-      </small>
+      <div>
+        <img
+          className="img-fluid mb-lg-0 mb-3"
+          src={give}
+          alt="M-Pesa paybill"
+        />
+        <img
+          className="img-fluid w-100 mb-1 mb-lg-0"
+          src={coop}
+          alt="Bank account"
+        />
+      </div>
     </Box>
   )
 }

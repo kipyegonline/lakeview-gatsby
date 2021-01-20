@@ -331,7 +331,10 @@ hr.divider {
     opacity: 1;
   }
 }
-
+.floater {
+  float: right;
+  width: 50%;
+}
 /*Media queries*/
 /*mobile*/
 @media (max-width: 480px) {
@@ -356,6 +359,10 @@ hr.divider {
   .about-list li {
     padding: 0.5rem 0;
     border: none;
+  }
+  .floater {
+    float: none;
+    width: 100%;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {

@@ -14,6 +14,7 @@ import Footer from "./ui/footer/Footer"
 import Nav from "./ui/Nav/Nav"
 import { icons } from "./icons"
 import Give from "./give/Give"
+import { ArrowUpwardRounded } from "@material-ui/icons"
 ///import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -60,7 +61,7 @@ const Layout = ({ children }) => {
         className="navigation-arrow"
         icon="arrow-alt-circle-up"
         size={arrowSize}
-        color="red"
+        color="purple"
         onClick={handleNavigation}
       />
       {socials ? <Socials useStyles={useStyles} /> : null}

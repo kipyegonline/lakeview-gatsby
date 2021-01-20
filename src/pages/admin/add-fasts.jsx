@@ -9,6 +9,7 @@ import {
 import React from "react"
 import $ from "jquery"
 import Layout from "../../components/layout"
+import AdminLayout from "./adminLayout"
 export default function AddFasts() {
   const [isReal, setReal] = React.useState(false)
   React.useEffect(() => {
@@ -16,20 +17,16 @@ export default function AddFasts() {
     if (email === "vinnykipx@gmail.com") setReal(true)
   }, [])
   return (
-    <div>
-      <Layout>
-        {isReal ? (
-          <Fasts />
-        ) : (
-          <div className="text-center mx-auto my-3 p-4">
-            <CircularProgress color="primary" size="3rem" />
-            <p className="alert alert-danger">
-              You cannot access this section!
-            </p>
-          </div>
-        )}
-      </Layout>
-    </div>
+    <AdminLayout>
+      {isReal ? (
+        <Fasts />
+      ) : (
+        <div className="text-center mx-auto my-3 p-4">
+          <CircularProgress color="primary" size="3rem" />
+          <p className="alert alert-danger">You cannot access this section!</p>
+        </div>
+      )}
+    </AdminLayout>
   )
 }
 

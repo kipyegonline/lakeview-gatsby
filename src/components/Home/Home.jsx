@@ -1,9 +1,9 @@
 import React from "react"
-import Carousel, { ReactSlider } from "./carousel/Carousel"
+import { ReactSlider } from "./carousel/Carousel"
 import Intro from "./intro/Intro"
 
 const Home = ({
-  carosel,
+  carosel = [],
   events,
   churcharea,
   fast = {},

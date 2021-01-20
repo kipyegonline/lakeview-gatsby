@@ -69,7 +69,14 @@ This section provides guidelines on how to use initialize Gatsby js projects, co
 
 - **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
 
-## Building
+## Hitches
+
+The following pages hae an issue in development and production
+Header.jsx,contactus.jsx,about.jsx,academy.jsx and Layout.jsx
+
+The problem is development environmemt doesn't support `globalThis` while prod supports it...so it shuld be removed on development then added when ready to build..headache!
+
+## Buildin
 
 Run gatsby build and project will automatically be built on a public folder if theres no err....
 

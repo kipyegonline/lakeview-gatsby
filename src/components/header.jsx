@@ -10,7 +10,6 @@ const headerDims = () => {
   if (window !== undefined) {
     w = document.documentElement.clientWidth
   }
-
   if (w < 480) {
     return headersm
   } else if (w < 768) {
