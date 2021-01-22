@@ -48,7 +48,7 @@ const header = {
   border: "1px solid rebecccapurpple",
   backgroundPosition: "center center",
   backgroundRepeat: "no-repeat",
-  height: 125,
+  height: 100,
 }
 const Header = () => {
   return (

@@ -70,7 +70,7 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
               {" "}
               <q>
                 {" "}
-                So then,just as you received Christ Jest as Lord,continue to
+                So then,just as you received Christ Jesus as Lord,continue to
                 live in him,rooted and built in him.
               </q>
               <strong className="ml-3">-Colossians 2:6-7</strong>
