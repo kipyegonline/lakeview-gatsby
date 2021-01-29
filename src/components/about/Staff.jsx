@@ -29,12 +29,16 @@ const useStyles = () =>
 const classes = useStyles()
 const PStaff = () => {
   return (
-    <Container className="p-2 my-2" id="pastoralcenter">
+    <Container
+      className="p-2 my-2"
+      id="pastoralcenter"
+      style={{ minHeight: "100vh" }}
+    >
       <Typography variant="h5" className="text-center text-uppercase my-2">
         Pastorate{" "}
       </Typography>
 
-      <Grid container>
+      <Grid container spacing={2}>
         {pastors.map((pastor, i) => (
           <Pastor key={i} {...pastor} />
         ))}
@@ -44,16 +48,23 @@ const PStaff = () => {
 }
 
 const Pastor = ({ name, title, pic, des }) => (
-  <Grid item xs={12} md={4} lg={4} style={{ width: "33%", margin: "1rem 0" }}>
+  <Grid
+    item
+    xs={12}
+    md={4}
+    lg={4}
+    style={{ width: "33%", height: "auto", margin: "1rem 0" }}
+  >
     <Card>
       {pic ? <CardMedia component="img" src={pic} /> : <Avatar />}
       <CardHeader
         title={<Typography variant="h6">{name}</Typography>}
-        subheader={<Typography variant="body1">{title}</Typography>}
+        subheader={
+          <Typography variant="body1">
+            {title} {des ? `(${des})` : ""}
+          </Typography>
+        }
       />
-      <CardContent>
-        <Typography>{des}</Typography>
-      </CardContent>
     </Card>
   </Grid>
 )

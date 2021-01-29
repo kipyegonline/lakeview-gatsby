@@ -38,7 +38,7 @@ const selectedStyle = {
 
 export const AboutNav = ({ current, setCurrent }) => {
   let w
-  if (window) {
+  if (globalThis.window) {
     w = document.documentElement.clientWidth
   }
 
@@ -53,7 +53,7 @@ export const AboutNav = ({ current, setCurrent }) => {
     window.scrollTo({ behavior: "smooth", top: 0 })
   }
   let links
-  if (window) {
+  if (globalThis.window) {
     links = document.querySelectorAll(".about-link")
   }
 

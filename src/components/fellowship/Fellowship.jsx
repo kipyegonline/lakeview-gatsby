@@ -101,10 +101,12 @@ export default class Fellowship extends React.Component {
                 padding="checkbox"
               >
                 <TableHead>
-                  <TableCell>#</TableCell>
-                  <TableCell>Estate</TableCell>
-                  <TableCell>Host</TableCell>
-                  <TableCell>Contact</TableCell>
+                  <TableRow>
+                    <TableCell>#</TableCell>
+                    <TableCell>Estate</TableCell>
+                    <TableCell>Host</TableCell>
+                    <TableCell>Contact</TableCell>
+                  </TableRow>
                 </TableHead>
                 <TableBody>
                   {estate.map((est, i) => (

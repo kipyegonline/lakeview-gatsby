@@ -6,17 +6,20 @@ import {
   ListItemIcon,
   Avatar,
   Grid,
+  Box,
   CardHeader,
   Card,
   CardMedia,
   ListItemText,
+  CircularProgress,
 } from "@material-ui/core"
 import Facebook from "@material-ui/icons/Facebook"
 import YouTube from "@material-ui/icons/YouTube"
 import IG from "@material-ui/icons/Instagram"
 import Twitter from "@material-ui/icons/Twitter"
-
+import MainSermons from "./mainSermons"
 import onlineWorship from "../../images/assets/img/online_worship.jpg"
+import { Error } from "@material-ui/icons"
 let url =
   "https://www.youtube.com/watch?v=_ZP9z9SgIqg&origin=http://lakeviewagc.net"
 
@@ -24,14 +27,15 @@ const ifremae = `<iframe width="560" height="315" src="https://www.youtube.com/e
 //autoplay=1
 // "&cc_load_policy=1"
 
-const EmbedYouTube = () => (
-  <>
-    <Typography variant="h5" className="text-center p-2 my-2">
-      Our Online Services platforms
+const EmbedYouTube = ({ sermons, loaded, month }) => (
+  <div className="mx-2">
+    <Typography variant="h5" className="text-center p-1 my-2">
+      Our Sermons
     </Typography>
     <Grid container alignItems="flex-start" justify="center">
-      <Grid item xs={12} sm={12} md={6} lg={6}>
-        <List align="center">
+      <Grid item xs={12} sm={12} md={3} lg={3}>
+        <Typography variant="h6">Our online platforms</Typography>
+        <List>
           <ListItem
             button
             selected
@@ -95,14 +99,29 @@ const EmbedYouTube = () => (
             <ListItemText primary="Lakeview AGC" />
           </ListItem>
         </List>
-      </Grid>
-      <Grid item sm={12} md={6} lg={6} className="my-2 ">
         <Card>
           <CardMedia image={onlineWorship} component="img" height={300} />
         </Card>
       </Grid>
+      <Grid item sm={12} md={9} lg={9} className="my-2 ">
+        {sermons.length ? (
+          <MainSermons sermons={sermons} month={month} />
+        ) : !!loaded ? (
+          <Box className="p-4 mx-auto my-auto">
+            <Typography align="center">
+              {" "}
+              <Error color="secondary" className="mr-2" />
+              {loaded}
+            </Typography>
+          </Box>
+        ) : (
+          <div className=" p-4 mx-auto my-4 text-center">
+            <CircularProgress color="primary" size="3rem" />
+          </div>
+        )}
+      </Grid>
     </Grid>
-  </>
+  </div>
 )
 function resizeMap() {
   let w = document.documentElement.clientWidth

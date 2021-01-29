@@ -222,7 +222,7 @@ const GeneralInfo = () => (
 
 function resizeMap() {
   let w
-  if (window) {
+  if (globalThis.window) {
     w = document.documentElement.clientWidth
   }
 

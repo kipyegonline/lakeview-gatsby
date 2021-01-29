@@ -335,6 +335,12 @@ hr.divider {
   float: right;
   width: 50%;
 }
+.float-right {
+  width: 50%;
+  height: auto;
+  margin-left: 0.5rem;
+  display: block;
+}
 /*Media queries*/
 /*mobile*/
 @media (max-width: 480px) {
@@ -363,6 +369,18 @@ hr.divider {
   .floater {
     float: none;
     width: 100%;
+  }
+  .float-right {
+    float: none !important;
+    border: 1px solid green;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .float-right img {
+    width: 100%;
+    height: auto;
+    width: 100%;
+    display: block;
   }
 }
 @media (min-width: 481px) and (max-width: 768px) {

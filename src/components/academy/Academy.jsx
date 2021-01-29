@@ -335,7 +335,7 @@ const FeedBack = () => (
 
 function adjustHeight() {
   let w
-  if (window !== undefined) {
+  if (globalThis.window !== undefined) {
     w = document.documentElement.clientWidth
   }
 

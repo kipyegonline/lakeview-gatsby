@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, navigate } from "gatsby"
 import ArrowIcon from "@material-ui/icons/ArrowRight"
 import {
   Grid,
@@ -10,9 +10,23 @@ import {
   ListItemIcon,
 } from "@material-ui/core"
 import Layout from "../../components/layout"
+import Admin from "./index"
+import { Pagination, PaginationItem } from "@material-ui/lab"
 
 export default function AdminLayout({ children }) {
-  return (
+  const [isLoggedIn, setLoggedIn] = React.useState(false)
+  const [user, setUser] = React.useState({})
+  const activeStyle = { color: "red" }
+  const handleLogOut = () => {
+    localStorage.removeItem("local-user-token")
+    window.location.pathname = "/admin/"
+  }
+  React.useEffect(() => {
+    let luser = JSON.parse(localStorage.getItem("local-user-token"))
+    luser?.altId !== undefined ? setLoggedIn(true) : setLoggedIn(false)
+    setUser(luser)
+  }, [])
+  const admin = (
     <Layout>
       <Grid
         container
@@ -33,15 +47,19 @@ export default function AdminLayout({ children }) {
             padding: 16,
           }}
         >
-          <Typography align="center" className="font-weight-bold">
-            Admin Area
+          <Typography className="font-weight-bold">
+            Admin Area({user?.username})
           </Typography>
           <List alignItems="flex-start">
             <ListItem divider>
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link to="/admin/add-sermon" className="nav-ad">
+              <Link
+                activeStyle={activeStyle}
+                to="/admin/add-sermon"
+                className="nav-ad"
+              >
                 Add Sermon
               </Link>
             </ListItem>
@@ -49,7 +67,11 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link to="/admin/add-event" className="nav-ad">
+              <Link
+                activeStyle={activeStyle}
+                to="/admin/add-event"
+                className="nav-ad"
+              >
                 Add Event
               </Link>
             </ListItem>
@@ -57,8 +79,45 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link to="/admin/add-fasts" className="nav-ad">
-                Add Message from pastor
+              <Link
+                activeStyle={activeStyle}
+                to="/admin/sermons"
+                className="nav-ad"
+              >
+                View Sermons
+              </Link>
+            </ListItem>
+
+            <ListItem divider>
+              <ListItemIcon>
+                <ArrowIcon />
+              </ListItemIcon>
+              <Link
+                activeStyle={activeStyle}
+                to="/admin/events"
+                className="nav-ad"
+              >
+                View events
+              </Link>
+            </ListItem>
+            <ListItem divider>
+              <ListItemIcon>
+                <ArrowIcon />
+              </ListItemIcon>
+              <Link
+                activeStyle={activeStyle}
+                to="/admin/add-fasts"
+                className="nav-ad"
+              >
+                Add prayer and fasting
+              </Link>
+            </ListItem>
+            <ListItem divider button color="primary">
+              <ListItemIcon>
+                <ArrowIcon />
+              </ListItemIcon>
+              <Link to="/admin/" className="nav-ad" onClick={handleLogOut}>
+                Log out
               </Link>
             </ListItem>
           </List>
@@ -73,9 +132,14 @@ export default function AdminLayout({ children }) {
           color: inherit;
           cursor: pointer;
         }
+        .nav-ad:hover,
+        .nav-ad:active {
+          color: inherit;
+        }
       `}</style>
     </Layout>
   )
+  return isLoggedIn ? admin : <Admin />
 }
 
 export const useInput = initialValue => {
@@ -90,3 +154,13 @@ export const useInput = initialValue => {
 export const UseTextField = ({ props }) => {
   return <TextField {...props} fullWidth className="my-2" />
 }
+
+export const PaginationMaker = ({ count, page, defaultPage, handleChange }) => (
+  <Pagination
+    color="primary"
+    onChange={handleChange}
+    count={count}
+    page={page}
+    defaultPage={defaultPage}
+  />
+)

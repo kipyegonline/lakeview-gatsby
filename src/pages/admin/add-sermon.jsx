@@ -22,9 +22,22 @@ export default function AddSermon() {
   const [errmsg, setError] = React.useState("")
   const [success, setSuccess] = React.useState("")
   const [spinner, setSpinner] = React.useState(false)
+  const [mainSermon, setSermon] = React.useState([])
   const form = React.useRef(null)
 
   const style = { width: "100%" }
+  const handleMessage = () => {
+    const message = smessage.value.trim()
+    if (message) {
+      setSermon([...mainSermon, message])
+      resetMessage()
+    }
+  }
+  const handleSermon = () => {
+    if (window.confirm("Clear sermon?")) {
+      setSermon([])
+    }
+  }
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -45,18 +58,19 @@ export default function AddSermon() {
     } else if (!speaker.trim()) {
       setError("Enter the speaker of the sermon")
       setTimeout(() => setError(""), 3000)
-    } else if (!message.trim()) {
+    } else if (!mainSermon.length) {
       setError("Enter message of the sermon")
       setTimeout(() => setError(""), 3000)
     } else if (
       date.length > 4 &&
-      message.length > 5 &&
+      mainSermon.length &&
       title.length > 3 &&
       speaker.length > 5
     ) {
       setError("")
-      //send to server side
+      //send to server sideeee
       setSpinner(true)
+
       axios
         .post("../../server/sermon.php?addsermon=true", {
           date,
@@ -64,28 +78,36 @@ export default function AddSermon() {
           speaker,
           theme,
           reading,
-          message,
+          message: mainSermon.join("*"),
           altId: v4(),
         })
         .then(res => {
           setSpinner(false)
           const { data } = res
           if (data.status === 200) {
-            setSuccess(res.msg)
-            resetTitle()
-            resetSPeaker()
-            resetTheme()
-            resetDate()
-            resetMessage()
-            resetReading()
-            setTimeout(() => setSuccess(""), 3000)
+            setSuccess(data.msg)
+
+            setTimeout(() => {
+              setSuccess("")
+              resetTitle()
+              resetSPeaker()
+              resetTheme()
+              resetDate()
+              resetMessage()
+              resetReading()
+              setSermon([])
+            }, 3000)
           } else {
             throw new Error(res.msg)
           }
         })
         .catch(error => {
           console.log(error, "err")
-          setError(error.message)
+          error.message
+            ? setError(error.message)
+            : setError(
+                "Error adding sermon. check internet connection and try again."
+              )
         })
         .finally(() => {
           setSpinner(false)
@@ -103,9 +125,9 @@ export default function AddSermon() {
         spacing={2}
         justify="space-between"
         alignItems="flex-start"
-        className="p-4 "
+        className="p-2 "
       >
-        <Grid>
+        <Grid xs={12} md={6} lg={6} item>
           <form
             onSubmit={handleSubmit}
             style={{ maxWidth: 400, padding: 16, width: "100%" }}
@@ -146,7 +168,7 @@ export default function AddSermon() {
             <UseTextField
               props={{
                 ...stheme,
-                label: "Enter sermon theme",
+                label: "Enter sermon theme (optional)",
                 style,
                 variant: "outlined",
                 id: "sermonTheme",
@@ -165,7 +187,7 @@ export default function AddSermon() {
             <UseTextField
               props={{
                 ...smessage,
-                label: "Enter message",
+                label: "Copy-paste the  paragraphs of the message",
                 style,
                 multiline: true,
                 rows: 5,
@@ -173,10 +195,24 @@ export default function AddSermon() {
                 id: "sermonMessage",
               }}
             />
+            <Button
+              color="secondary"
+              variant="outlined"
+              onClick={handleMessage}
+            >
+              Add paragraph
+            </Button>
+            {!!mainSermon.length && (
+              <FormHelperText>
+                {mainSermon.length} paragraph(s) added
+              </FormHelperText>
+            )}
             <Box className="p-1">
-              {errmsg && <FormHelperText error>{errmsg}</FormHelperText>}
-              {success && (
-                <Typography className="text-success">{success}</Typography>
+              {!!errmsg && <FormHelperText error>{errmsg}</FormHelperText>}
+              {!!success && (
+                <Typography className="alert alert-success">
+                  {success}
+                </Typography>
               )}
             </Box>
             {spinner && (
@@ -191,12 +227,39 @@ export default function AddSermon() {
               disabled={spinner}
               style={style}
             >
-              Add Sermon
+              Publish Sermon
             </Button>
+
+            <Divider />
           </form>
-          <Divider />
         </Grid>
-        <Grid item></Grid>
+        <Grid xs={12} md={6} lg={6} item>
+          <Box className="p-2">
+            {!!mainSermon.length && (
+              <Typography variant="h6">Sermon message Preview</Typography>
+            )}
+            {mainSermon.map((sermon, i) => (
+              <Typography
+                key={i}
+                variant="subtitle2"
+                style={{ textIndent: 15, fontWeight: "normal" }}
+              >
+                {sermon}
+              </Typography>
+            ))}
+            {!!mainSermon.length && (
+              <Button
+                color="secondary"
+                variant="contained"
+                size="small"
+                className="mt-2"
+                onClick={handleSermon}
+              >
+                Clear Sermon
+              </Button>
+            )}
+          </Box>
+        </Grid>
       </Grid>
     </AdminLayout>
   )

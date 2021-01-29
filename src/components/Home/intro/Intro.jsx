@@ -125,7 +125,7 @@ const Celebrating = ({ churcharea }) => (
     />
 
     <CardContent className=" my-1 p-3">
-      <Box className="w-50 float-right">
+      <Box className=" float-right">
         {" "}
         <CardMedia
           src={churcharea}
@@ -152,7 +152,7 @@ const Fellowship = ({ churcharea }) => (
   <Card>
     <CardHeader title="Fellowship" className="text-center my-1 p-0 purped" />
     <CardContent className=" my-1 p-3">
-      <Box className="w-50 float-right">
+      <Box className=" float-right">
         {" "}
         <CardMedia
           src={churcharea}
@@ -178,7 +178,7 @@ const Companionship = ({ churcharea }) => (
     />
 
     <CardContent className=" my-1 p-3">
-      <Box className="w-50 float-right">
+      <Box className=" float-right">
         {" "}
         <CardMedia
           src={churcharea}
@@ -207,7 +207,7 @@ const Missions = ({ churcharea }) => (
       className="text-center my-1 p-0 purped"
     />
     <CardContent className=" my-1 p-3">
-      <Box className="w-50 float-right">
+      <Box className=" float-right">
         {" "}
         <CardMedia
           src={churcharea}

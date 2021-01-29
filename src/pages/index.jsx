@@ -26,6 +26,7 @@ const IndexPage = () => {
   const date = "2021-01-" + new Date().getDate()
   const [fast, setFast] = React.useState({})
   const [fasts, setFasts] = React.useState([])
+  const [events, setEvents] = React.useState([])
   const [welcome, setWelcome] = React.useState("")
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
@@ -88,6 +89,17 @@ const IndexPage = () => {
       setWelcome("Welcome to Lakeview AGC website.")
     }
   }
+  const fetchEvents = () => {
+    fetch(`./server/sermon.php?fetchevents=true`)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) || data.length) {
+          setEvents(data)
+        }
+      })
+      .catch(error => console.log(error))
+  }
+
   React.useEffect(() => {
     let url1 = `./server/fasting.php?getfast=true&day=${date}`
     let url2 = `./server/fasting.php?getfasts=true`
@@ -96,10 +108,10 @@ const IndexPage = () => {
       fetchData(url1, setFast)
       fetchData(url2, setFasts)
     }
+    //fetch events
+    fetchEvents()
   }, [])
-  React.useLayoutEffect(() => {
-    console.log("prime")
-  }, [])
+
   return (
     <Layout>
       <SEO title="Home | Lakeview AGC -section 58 | 2021" />
@@ -112,6 +124,7 @@ const IndexPage = () => {
         churcharea={smallSlides}
         fast={fast}
         selected={selected}
+        events={events}
         getDate={handleUserDate}
       />
     </Layout>

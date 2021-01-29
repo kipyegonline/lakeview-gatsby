@@ -55,7 +55,7 @@ export default function AddEvent() {
         .then(res => {
           const { data } = res
           if (data.status === 200) {
-            setSuccess(res.msg)
+            setSuccess(data.msg)
             resetEventDate()
             resetEvent()
             resetVenue()
@@ -121,9 +121,11 @@ export default function AddEvent() {
               }}
             />
             <Box className="p-1">
-              {errmsg && <FormHelperText error>{errmsg}</FormHelperText>}
-              {success && (
-                <Typography className="text-success">{success}</Typography>
+              {!!errmsg && <FormHelperText error>{errmsg}</FormHelperText>}
+              {!!success && (
+                <Typography className="alert alert-success my-2">
+                  {success}
+                </Typography>
               )}
             </Box>
             {spinner && (
@@ -141,9 +143,6 @@ export default function AddEvent() {
               Add Event
             </Button>
           </form>
-        </Grid>
-        <Grid item>
-          <div></div>
         </Grid>
       </Grid>
     </AdminLayout>

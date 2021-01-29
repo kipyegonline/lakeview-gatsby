@@ -2,6 +2,7 @@ import React from "react"
 import axios from "axios"
 import { v4 } from "uuid"
 import { navigate } from "gatsby"
+import ErrorIcon from "@material-ui/icons/Error"
 import {
   Box,
   FormControl,
@@ -18,6 +19,7 @@ import Layout from "../../components/layout"
 
 const style = { display: "block", width: "100%" }
 export default function Index() {
+  const [username, setUsername] = React.useState("")
   const [email, setEmail] = React.useState("")
   const [password, setPassword] = React.useState("")
   const [useremail, setUserEmail] = React.useState("")
@@ -56,7 +58,8 @@ export default function Index() {
           if (data.status === 200) {
             setPassword("")
             setEmail("")
-            navigate("./admin/add-sermon")
+            localStorage.setItem("local-user-token", JSON.stringify(data))
+            //location.pathname = "/admin/add-sermon"
             //setTimeout(() => setSuccess(""), 3000)
           } else {
             throw new Error(data.msg)
@@ -79,7 +82,10 @@ export default function Index() {
   }
   const handleSignUP = e => {
     e.preventDefault()
-    if (useremail.trim().length < 6 || !useremail.trim().includes("@")) {
+    if (username.trim().length < 5) {
+      setError("Kindly add a username")
+      setTimeout(() => setError(""), 3000)
+    } else if (useremail.trim().length < 6 || !useremail.trim().includes("@")) {
       useremail.trim().length < 6
         ? setError("Email address is required")
         : setError("invalid email address")
@@ -105,19 +111,24 @@ export default function Index() {
         .post("../../server/sermon.php?signupuser=true", {
           userpassword,
           useremail,
+          username,
           altId: v4(),
         })
         .then(res => {
           const { data } = res
-          if (data.status === 200) {
-            setSuccess(data.msg)
-            setUserPassword("")
-            setUsercPassword("")
-            setUserEmail("")
-            setTimeout(() => setSuccess(""), 3000)
-          } else {
-            throw new Error(data.msg)
-          }
+          setTimeout(() => {
+            if (data.status === 200) {
+              setSpinner(false)
+              setSuccess(data.msg)
+              setUserPassword("")
+              setUsercPassword("")
+              setUserEmail("")
+              form.current.reset()
+              setTimeout(() => setSuccess(""), 3000)
+            } else {
+              throw new Error(data.msg)
+            }
+          }, 2000)
         })
         .catch(error => {
           console.log(error)
@@ -163,6 +174,7 @@ export default function Index() {
       <Typography className="alert alert-info text-center mb-3">
         Admin login section{" "}
       </Typography>
+
       <FormControl style={style}>
         <InputLabel>Enter email address....</InputLabel>
         <Input
@@ -181,7 +193,8 @@ export default function Index() {
       </FormControl>
       <Box>
         {errormsg && (
-          <FormHelperText error className="text-center ">
+          <FormHelperText error>
+            <ErrorIcon color="secondary" className="mr-2" size="small" />
             {errormsg}
           </FormHelperText>
         )}
@@ -190,7 +203,7 @@ export default function Index() {
             {success}
           </FormHelperText>
         )}
-        {spinner && <LinearProgress color="primary" />}
+        {spinner && <LinearProgress color="primary" className="my-2" />}
       </Box>
       <Button
         type="submit"
@@ -198,8 +211,9 @@ export default function Index() {
         variant="contained"
         className="mt-2 "
         style={style}
+        disabled={spinner}
       >
-        Log in
+        {spinner ? "Logging in" : "Log in"}
       </Button>
       {signlog}
     </form>
@@ -215,6 +229,14 @@ export default function Index() {
       <Typography className="alert alert-info text-center mb-3">
         Admin sign up section.....
       </Typography>
+      <FormControl style={style}>
+        <InputLabel>Enter username...</InputLabel>
+        <Input
+          type="text"
+          fullWidth
+          onChange={e => setUsername(e.target.value)}
+        />
+      </FormControl>
       <FormControl style={style}>
         <InputLabel>Enter email address....</InputLabel>
         <Input
@@ -242,10 +264,15 @@ export default function Index() {
       <Box>
         {errormsg && (
           <FormHelperText error className="text-center p-1 ">
+            <ErrorIcon color="secondary" className="mr-2" size="small" />{" "}
             {errormsg}
           </FormHelperText>
         )}
-        {success && <FormHelperText>{success}</FormHelperText>}
+        {success && (
+          <FormHelperText className="alert alert-success">
+            {success}
+          </FormHelperText>
+        )}
         {spinner && <LinearProgress color="primary" />}
       </Box>
       <Button
@@ -254,6 +281,7 @@ export default function Index() {
         variant="contained"
         className="mt-2 "
         style={style}
+        disabled={spinner}
       >
         signUp
       </Button>

@@ -72,9 +72,9 @@ This section provides guidelines on how to use initialize Gatsby js projects, co
 ## Hitches
 
 The following pages hae an issue in development and production
-Header.jsx,contactus.jsx,about.jsx,academy.jsx and Layout.jsx
+Header.jsx,contactus.jsx,about.jsx (2),academy.jsx and Layout.jsx
 
-The problem is development environmemt doesn't support `globalThis` while prod supports it...so it shuld be removed on development then added when ready to build..headache!
+The problem is development environmemt doesn't support `globalThis` while prod supports it...so it shuld be removed on development then added when ready to build..headache!... :)
 
 ## Buildin
 

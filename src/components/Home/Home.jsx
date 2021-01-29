@@ -1,10 +1,10 @@
 import React from "react"
 import { ReactSlider } from "./carousel/Carousel"
 import Intro from "./intro/Intro"
-
+import { UpcomingEvents } from "../Home/events/Events"
 const Home = ({
   carosel = [],
-  events,
+  events = [],
   churcharea,
   fast = {},
   getDate = f => f,
@@ -23,6 +23,7 @@ const Home = ({
       getDate={getDate}
       selected={selected}
     />
+    {!!events.length && <UpcomingEvents events={events} />}
   </div>
 )
 export default Home

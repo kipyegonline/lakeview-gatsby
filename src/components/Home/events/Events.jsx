@@ -1,7 +1,8 @@
 import React from "react"
-
+import moment from "moment"
 import $ from "jquery"
 import {
+  Grid,
   Table,
   TableContainer,
   Avatar,
@@ -17,6 +18,7 @@ import {
   ListItemText,
   Typography,
   IconButton,
+  Hidden,
   Box,
   Divider,
   ListItemAvatar,
@@ -52,7 +54,51 @@ const Events = ({ events }) => {
   )
 }
 export default Events
-
+//up coming events
+export const UpcomingEvents = ({ events }) => {
+  return (
+    <Grid container spacing={2} alignItems="flex-start" justify="space-around">
+      <Hidden xsUp>
+        <Grid item md={4} lg={4} xs={12}></Grid>
+      </Hidden>
+      <Grid item md={8} lg={8} xs={12}>
+        <Typography align="center" variant="h6" className="my-2">
+          Upcoming events
+        </Typography>
+        <EventsTable events={events} />
+      </Grid>
+    </Grid>
+  )
+}
+const EventsTable = ({ events = [] }) => (
+  <TableContainer>
+    <Table size="small">
+      <TableHead>
+        <TableRow>
+          <TableCell>#</TableCell>
+          <TableCell>Event</TableCell>
+          <TableCell>Details</TableCell>
+          <TableCell>Venue</TableCell>
+          <TableCell>Date</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {events.map((event, i) => (
+          <EventTable key={event.id} index={i} {...event} />
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+)
+const EventTable = ({ index, event, date, details, venue }) => (
+  <TableRow>
+    <TableCell>{index + 1}.</TableCell>
+    <TableCell>{event}</TableCell>
+    <TableCell>{details}</TableCell>
+    <TableCell>{venue}</TableCell>
+    <TableCell>{moment(date).format("dddd,MMMM Do, h:mm")}</TableCell>
+  </TableRow>
+)
 //coming up
 const ComingUp = () => (
   <div className="col-md-8 card mb-2">
