@@ -8,6 +8,7 @@ const Home = ({
   churcharea,
   fast = {},
   getDate = f => f,
+  fetchEvent = f => f,
   selected,
 }) => (
   <div className="p-2">
@@ -23,7 +24,9 @@ const Home = ({
       getDate={getDate}
       selected={selected}
     />
-    {!!events.length && <UpcomingEvents events={events} />}
+    {!!events.length && (
+      <UpcomingEvents events={events} fetchEvent={fetchEvent} />
+    )}
   </div>
 )
 export default Home

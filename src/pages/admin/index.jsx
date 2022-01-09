@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { v4 } from "uuid"
-import { navigate } from "gatsby"
+//import { navigate } from "gatsby"
 import ErrorIcon from "@material-ui/icons/Error"
 import {
   Box,
@@ -11,7 +11,6 @@ import {
   Paper,
   Typography,
   Button,
-  Link,
   FormHelperText,
   LinearProgress,
 } from "@material-ui/core"
@@ -31,7 +30,10 @@ export default function Index() {
   const form = React.useRef(null)
 
   const [isLogin, setLogin] = React.useReducer((a, b) => (b = !a), true)
-
+  React.useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("local-user-token"))
+    //if (user) window.location.pathname = "/admin/sermons"
+  }, [])
   const handleLogin = e => {
     e.preventDefault()
     if (!email && !password) {
@@ -59,8 +61,14 @@ export default function Index() {
             setPassword("")
             setEmail("")
             localStorage.setItem("local-user-token", JSON.stringify(data))
-            //location.pathname = "/admin/add-sermon"
-            //setTimeout(() => setSuccess(""), 3000)
+            setTimeout(
+              () => localStorage.removeItem("local-user-token"),
+              6e4 * 30
+            )
+            window.location.pathname = "/admin/add-sermon"
+            setTimeout(() => setSuccess(""), 3000)
+            setEmail("")
+            setPassword("")
           } else {
             throw new Error(data.msg)
           }
@@ -119,6 +127,7 @@ export default function Index() {
           setTimeout(() => {
             if (data.status === 200) {
               setSpinner(false)
+              setSpinner(false)
               setSuccess(data.msg)
               setUserPassword("")
               setUsercPassword("")
@@ -132,12 +141,11 @@ export default function Index() {
         })
         .catch(error => {
           console.log(error)
-          error.message
+          !!error.message
             ? setError(error.message)
             : setError("Error signing up. Check network and try again")
         })
         .finally(() => {
-          setSpinner(false)
           setTimeout(() => setError(""), 3000)
         })
     } else {

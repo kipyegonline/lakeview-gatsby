@@ -35,12 +35,15 @@ const Layout = ({ children }) => {
     }
   }
   let arrowSize
-  if (window !== undefined) {
+
+  if (globalThis?.window !== undefined) {
     const smallScreen = document.documentElement.clientWidth
     arrowSize = smallScreen > 480 ? "2x" : "2x"
     if (smallScreen < 770) {
       window.onscroll = handleScroll
     }
+  } else {
+    var globalThis
   }
 
   React.useEffect(() => {

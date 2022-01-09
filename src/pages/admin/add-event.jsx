@@ -54,20 +54,22 @@ export default function AddEvent() {
         })
         .then(res => {
           const { data } = res
-          if (data.status === 200) {
-            setSuccess(data.msg)
-            resetEventDate()
-            resetEvent()
-            resetVenue()
-            resetDetails()
-            setTimeout(() => setSuccess(""), 3000)
-          } else {
-            throw new Error(res.msg)
-          }
+          setTimeout(() => {
+            if (data.status === 200) {
+              setSpinner(false)
+              setSuccess(data.msg)
+              resetEventDate()
+              resetEvent()
+              resetVenue()
+              resetDetails()
+              setTimeout(() => setSuccess(""), 3000)
+            } else {
+              throw new Error(res.msg)
+            }
+          }, 3000)
         })
         .catch(error => setError(error.message))
         .finally(() => {
-          setSpinner(false)
           setTimeout(() => setError(""), 3000)
         })
     } else {
@@ -99,7 +101,7 @@ export default function AddEvent() {
             <UseTextField
               props={{
                 ...eventDate,
-                type: "datetime-local",
+                type: "date",
                 helperText: "Enter event date/time",
                 variant: "outlined",
               }}

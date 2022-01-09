@@ -3,7 +3,7 @@
   "private": true,
   "description": "Lakeview AGC in gatsby js",
   "version": "0.1.0",
-  "author": "Vince vince.kipyegon11@gmail.com>",
+  "author": "Vince <vince.kipyegon11@gmail.com>",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
@@ -16,6 +16,8 @@
     "antd": "^4.10.2",
     "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
+    "chokidar": "^3.4.0",
+    "d3": "^7.2.1",
     "gatsby": "^2.24.47",
     "gatsby-image": "^2.4.16",
     "gatsby-plugin-htaccess": "^1.4.0",

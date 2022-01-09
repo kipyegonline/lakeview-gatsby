@@ -7,8 +7,11 @@ import { makeStyles } from "@material-ui/styles"
 
 const headerDims = () => {
   let w
-  if (globalThis.window !== undefined) {
+
+  if (globalThis?.window !== undefined) {
     w = document.documentElement.clientWidth
+  } else {
+    var globalThis
   }
   if (w < 480) {
     return headersm

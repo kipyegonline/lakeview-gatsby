@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import moment from "moment"
 import {
   Grid,
   CardHeader,
@@ -18,7 +19,9 @@ import ArrowIcon from "@material-ui/icons/Link"
 import ErrorIcon from "@material-ui/icons/Error"
 import fasting from "../../../images/assets/img/2021/fastingwide.png"
 
-import fastwrapper from "../../../images/assets/img/2021/fastwrapper.png"
+import theme from "../../../images/assets/img/2022/theme_of_the_year.jpg"
+import { makeStyles, StylesContext } from "@material-ui/styles"
+import { Pagination } from "@material-ui/lab"
 const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
   const PrayerFasting = (
     <Box>
@@ -45,16 +48,18 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
         <Grid item className="p-2 mb-1 mx-2 my-2" xs={12} md={4} lg={4}>
           <Card className="p-4">
             {" "}
-            <Typography className=" r ">
+            <Typography className=" r " variant="body1">
               {" "}
               <strong>
                 Theme of the Year - {new Date().getFullYear()}
               </strong>{" "}
             </Typography>
-            <Typography variant="body2" className="font-weight-bold">
-              LIVE (Rooted and Built in him)
+            <Typography variant="body2" className="font-weight-bold mb-2">
+              <q> WALKING IN OBEDIENCE TO THE WORD </q>
             </Typography>
-            {new Date().getMonth() < 1 && PrayerFasting}
+            <Typography className="mt-2 text-center text-bold">
+              <b> 1 John 2:3</b>
+            </Typography>
           </Card>
         </Grid>
 
@@ -70,10 +75,9 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
               {" "}
               <q>
                 {" "}
-                So then,just as you received Christ Jesus as Lord,continue to
-                live in him,rooted and built in him.
+                We know that we have come to kow him if we obey his commands.
               </q>
-              <strong className="ml-3">-Colossians 2:6-7</strong>
+              <strong className="ml-3"> 1 John 2:3</strong>
             </Typography>
           </Card>
         </Grid>
@@ -90,19 +94,30 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
               Sunday Service
             </Typography>
             <Box className="my-3">
-              <Typography variant="body1" className="mb-2">
-                First service - 9:30 AM{" "}
+              <Typography variant="body2" className="mb-2">
+                First service 8:30 - 9:45 AM{" "}
               </Typography>
-              <Typography> Second Service - 11:30 AM </Typography>
+              <Typography variant="body2" className="mb-2">
+                {" "}
+                Second Service 10:00 - 11:30 AM{" "}
+              </Typography>
+              <Typography variant="body2">
+                {" "}
+                Youth Service & Sunday School 9:30 - 11:30 AM{" "}
+              </Typography>
             </Box>
           </Card>
           {/*<!--End Responsive -->*/}
         </Grid>
       </Grid>
 
-      {new Date().getMonth() < 1 && (
-        <Fasting {...fast} getDate={getDate} selected={selected} />
-      )}
+      {!!fast?.id &&
+        new Date().getMonth() < 1 &&
+        new Date().getFullYear() === 2022 && (
+          <>
+            <Fasting {...fast} getDate={getDate} selected={selected} />
+          </>
+        )}
 
       <Divider />
       <Celebrating churcharea={churcharea[0]} />
@@ -269,23 +284,28 @@ export const Fasting = ({
   }
   return (
     <Card
-      className="w-100 mb-3 p-2 position-relative"
+      className="w-100 mb-3 my-2 p-2 position-relative"
       style={{ background: "#ccc" }}
     >
-      <small style={dayz}>Day {id}</small>
+      <small style={dayz}>
+        Day{" "}
+        {new Date(date).getDate() - new Date("2022", "0", "10").getDate() + 1}
+      </small>
       <Typography
         variant="subtitle2"
         align="center"
         className="p-0 m-0 text-primary"
       >
         {" "}
-        {date ? new Date(date).toDateString() : new Date().toDateString()}
+        {date
+          ? moment(date).format("dddd,MMMM Do, YYYY")
+          : moment().format("dddd,MMMM Do, YYYY")}
       </Typography>
       <CardHeader
         className="text-center text-transform my-1 p-0 purped"
         title={
           <Typography variant="h6">
-            21 Days of Prayer and Fasting {"       "}
+            20 Days of Prayer and Fasting {"       "}
           </Typography>
         }
       />
@@ -315,11 +335,10 @@ export const Fasting = ({
             <div className="my-2">
               <Divider />
               <div className="mt-3">
-                {DatePickers} |
                 <Typography>
                   {" "}
                   <Link to="/prayer-and-fasting" clasName="ml-3">
-                    See all the 21 days of prayer and fasting.
+                    See all the 20 days of prayer and fasting.
                   </Link>
                 </Typography>
               </div>
@@ -341,4 +360,16 @@ export const Fasting = ({
       </CardContent>
     </Card>
   )
+}
+const imgStyles = makeStyles({
+  img: {
+    "max-width": "600px",
+    width: "100%",
+    "@media (max-width:768px)": { maxWidth: 500, width: "100%" },
+    "@media (max-width:480px)": { maxWidth: 300, width: "100%" },
+  },
+})
+export const ThemeOfTheYear = () => {
+  const styles = imgStyles()
+  return <img className={styles.img} src={theme} alt="Theme of the year 2022" />
 }

@@ -1,4 +1,5 @@
 import React from "react"
+import axios from "axios"
 import { Link, navigate } from "gatsby"
 import ArrowIcon from "@material-ui/icons/ArrowRight"
 import {
@@ -8,24 +9,49 @@ import {
   Typography,
   TextField,
   ListItemIcon,
+  CircularProgress,
+  Box,
 } from "@material-ui/core"
 import Layout from "../../components/layout"
 import Admin from "./index"
 import { Pagination, PaginationItem } from "@material-ui/lab"
 
 export default function AdminLayout({ children }) {
-  const [isLoggedIn, setLoggedIn] = React.useState(false)
+  const [isLoggedIn, setLoggedIn] = React.useState(undefined)
   const [user, setUser] = React.useState({})
+  const [visits, setVisit] = React.useState({})
   const activeStyle = { color: "red" }
   const handleLogOut = () => {
     localStorage.removeItem("local-user-token")
     window.location.pathname = "/admin/"
   }
+  // fetch user statistics
+  const fetchStats = async () => {
+    try {
+      const { data } = await axios.get("../../server/sermon.php?webstats=true")
+      if ("month" in data) setVisit(data)
+    } catch (error) {}
+  }
   React.useEffect(() => {
     let luser = JSON.parse(localStorage.getItem("local-user-token"))
-    luser?.altId !== undefined ? setLoggedIn(true) : setLoggedIn(false)
-    setUser(luser)
-  }, [])
+
+    if (luser !== null) {
+      setLoggedIn(true)
+    } else {
+      setLoggedIn(false)
+      navigate("/admin")
+    }
+  }, [user?.altId])
+  React.useEffect(() => {
+    if (visits.month === undefined) fetchStats()
+  }, [visits?.month])
+  const spinner = (
+    <Box className="p-4 mx-auto my-4">
+      <Typography className="text-center">
+        <CircularProgress color="primary" fontSize="2rem" />
+      </Typography>
+    </Box>
+  )
   const admin = (
     <Layout>
       <Grid
@@ -38,8 +64,8 @@ export default function AdminLayout({ children }) {
         <Grid
           item
           xs={12}
-          md={2}
-          lg={2}
+          md={3}
+          lg={3}
           style={{
             background: "purple",
             color: "white",
@@ -47,7 +73,7 @@ export default function AdminLayout({ children }) {
             padding: 16,
           }}
         >
-          <Typography className="font-weight-bold">
+          <Typography className="font-weight-bold p-2 alert alert-info">
             Admin Area({user?.username})
           </Typography>
           <List alignItems="flex-start">
@@ -121,8 +147,19 @@ export default function AdminLayout({ children }) {
               </Link>
             </ListItem>
           </List>
+          <ListItem divider button color="primary" className="bg-red-500 p-2">
+            <div>
+              <Typography>Website Visits</Typography>
+              <p>Today :{visits?.today}</p>
+              <p>This week:{visits?.week}</p>
+              <p>This month :{visits?.month}</p>
+              <p>
+                {new Date().getFullYear()} :{visits?.month}
+              </p>
+            </div>
+          </ListItem>
         </Grid>
-        <Grid item xs={12} md={10} lg={10}>
+        <Grid item xs={12} md={9} lg={9}>
           {children}
         </Grid>
       </Grid>
@@ -139,7 +176,7 @@ export default function AdminLayout({ children }) {
       `}</style>
     </Layout>
   )
-  return isLoggedIn ? admin : <Admin />
+  return isLoggedIn ? admin : isLoggedIn === undefined ? spinner : <Admin />
 }
 
 export const useInput = initialValue => {

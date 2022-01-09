@@ -17,9 +17,13 @@ import moment from "moment"
 
 function MainSermons({ sermons, month }) {
   const { curmonth, setMonth } = month
+  const [monthC, setMonthC] = React.useState(curmonth)
+  React.useEffect(() => {
+    setMonthC(curmonth)
+  }, [month])
   return (
     <Box>
-      <MonthPicker curmonth={curmonth} setMonth={setMonth} />
+      <MonthPicker curmonth={monthC} setMonth={setMonth} />
       {sermons.slice(0, 4).map(sermon => (
         <Sermon key={sermon.id} {...sermon} />
       ))}
@@ -44,14 +48,14 @@ export const Sermon = ({
       title={<Typography variant="h5">{title}</Typography>}
       subheader={
         <Typography variant="subtitle2">
-          {moment(date).format("MMMM Do YYYY")}
+          {moment(date).format("MMMM Do, YYYY")}
         </Typography>
       }
     />
 
     <CardContent className="mx-2 px-2">
       <Typography variant="subtitle1">Speaker: {speaker}</Typography>
-      <Typography variant="subtitle1">Readings: {reading}</Typography>
+      <Typography variant="subtitle1">Reading(s): {reading}</Typography>
       {message.split("*").map((msg, i) => (
         <Typography
           key={i}

@@ -3,7 +3,7 @@ import { v4 } from "uuid"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Home from "../components/Home/Home"
-import { Fasting } from "../components/Home/intro/Intro"
+import { Fasting, ThemeOfTheYear } from "../components/Home/intro/Intro"
 import { carosel, smallSlides } from "../components/Main"
 import {
   Dialog,
@@ -13,23 +13,18 @@ import {
   Button,
   DialogTitle,
 } from "@material-ui/core"
+/* eslint-disable no-restricted-globals */
 
-const faux = {
-  id: 1,
-  verse: "john3:16",
-  message: "so loved the word",
-  title: "fasting.....",
-  subtitle: "prayer and fasting",
-  date: "2021-01-11",
-}
 const IndexPage = () => {
-  const date = "2021-01-" + new Date().getDate()
+  const date = new Date().getDate()
   const [fast, setFast] = React.useState({})
   const [fasts, setFasts] = React.useState([])
   const [events, setEvents] = React.useState([])
-  const [welcome, setWelcome] = React.useState("")
+  const [welcome, setWelcome] = React.useState("Theme of the year 2022.")
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
+  const [greeted, setGreeted] = React.useState(false)
+  const month = new Date().getMonth()
 
   const fetchData = async (url, callback) => {
     try {
@@ -40,10 +35,11 @@ const IndexPage = () => {
       callback({ id: 0 })
     }
   }
+  // update the metrics
   const handleUserCount = isNew => {
     let localUser = localStorage.getItem("localuser")
 
-    if (!localUser) {
+    if (localUser === null) {
       localStorage.setItem("localuser", v4())
       localUser = localStorage.getItem("localuser")
     }
@@ -52,31 +48,36 @@ const IndexPage = () => {
       `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`
     )
   }
+  // the thing with fasting
+  const handleUserDate = (e, p) => {
+    if (p < 10 || p > 30) return
 
-  const handleUserDate = e => {
-    const val = e.target.value
-
-    if (val < "2021-01-10" || val > "2021-01-31") {
-      alert("21 days of fasting runs between January 11th and January 31st")
+    if (p < 10 || p > 30) {
+      //alert("21 days of fasting runs between January 10th and January 30th")
     } else {
       setFast({})
-      setSelected(val)
-      let url1 = `./server/fasting.php?getfast=true&day=${val}`
+      setSelected(p)
+      let url1 = `./server/fasting.php?getfast=true&day=${p}`
 
       fetchData(url1, setFast)
     }
   }
-
-  const showNotifications = date => {
-    if (new Date().getMonth() > 0) return
+  // fasting metrics
+  const recordMetrics = () => {
+    let day = 6e4 * 60 * 24
+    let now = new Date().getTime()
     let prayerday = localStorage.getItem("prayerday")
+    const newYearMessage = localStorage.getItem("new-year-2022")
 
     if (prayerday) {
-      setWelcome("")
+      if (now - Number(prayerday) > day) {
+        localStorage.setItem("prayerday", JSON.stringify(now))
 
-      if (prayerday !== date) {
-        localStorage.setItem("prayerday", date)
-        setTimeout(() => setOpen(true), 10000)
+        if (newYearMessage && (date > 9 || date < 31)) {
+          setGreeted(true)
+          setOpen(true)
+          setWelcome("20 Days of Prayer and Fasting")
+        }
         handleUserCount(0)
       }
     } else {
@@ -84,40 +85,57 @@ const IndexPage = () => {
       handleUserCount(1)
 
       // show dialog
-      localStorage.setItem("prayerday", date)
-      setTimeout(() => setOpen(true), 10000)
-      setWelcome("Welcome to Lakeview AGC website.")
+      localStorage.setItem("prayerday", JSON.stringify(now))
     }
   }
-  const fetchEvents = () => {
-    fetch(`./server/sermon.php?fetchevents=true`)
+  // close modal
+  const closeModal = () => {
+    setOpen(false)
+    setGreeted(false)
+  }
+  // Events happening
+  const fetchEvents = (month = "") => {
+    fetch(`./server/sermon.php?fetchevents=true&month=${month}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data) || data.length) {
-          setEvents(data)
+          if (data.length) setEvents(data)
         }
       })
       .catch(error => console.log(error))
   }
 
-  React.useEffect(() => {
-    let url1 = `./server/fasting.php?getfast=true&day=${date}`
-    let url2 = `./server/fasting.php?getfasts=true`
-    if (!!!fasts.length) {
-      showNotifications(date)
-      fetchData(url1, setFast)
-      fetchData(url2, setFasts)
+  // new Year theme
+  const newYearTheme = () => {
+    const newYearMessage = localStorage.getItem("new-year-2022")
+    if (!!!newYearMessage) {
+      setOpen(true)
+      localStorage.setItem("new-year-2022", "visited")
     }
+  }
+  React.useEffect(() => {
+    //recordMetrics()
     //fetch events
-    fetchEvents()
+    fetchEvents(month + 1)
+    handleUserDate("", date)
+    setTimeout(recordMetrics, 3000)
+    setTimeout(newYearTheme, 3000)
   }, [])
 
   return (
     <Layout>
-      <SEO title="Home | Lakeview AGC -section 58 | 2021" />
+      <SEO
+        title={`Home | Lakeview AGC-Nakuru-section 58 | ${new Date().getFullYear()}| Lakeview Academy school | Churches in Nakuru`}
+      />
 
-      <UseModal open={open} setOpen={setOpen} welcome={welcome}>
-        <Fasting {...fast} getDate={handleUserDate} selected={selected} />
+      <UseModal open={open} setOpen={closeModal} welcome={welcome}>
+        {greeted ? (
+          !!fast?.id && (
+            <Fasting {...fast} getDate={handleUserDate} selected={selected} />
+          )
+        ) : (
+          <ThemeOfTheYear />
+        )}
       </UseModal>
       <Home
         carosel={carosel}
@@ -125,6 +143,7 @@ const IndexPage = () => {
         fast={fast}
         selected={selected}
         events={events}
+        fetchEvent={fetchEvents}
         getDate={handleUserDate}
       />
     </Layout>
@@ -135,8 +154,8 @@ export default IndexPage
 
 const UseModal = ({
   children,
-  title = "21 Days of Prayer and Fasting.",
-  open = false,
+  title = "Lakeview AGC",
+  open = true,
   setOpen,
   welcome,
 }) => {
@@ -163,7 +182,7 @@ const UseModal = ({
     </Dialog>
   )
 }
-// cv
+/*
 
 const skills = [
   {
@@ -209,3 +228,10 @@ for (let i = 0; i < skills.length; i++) {
   }
   //css frameworks
 }
+*/
+console.log(
+  "%cWelcome to %cLakeview AGC ",
+  "font-family:cursive;font-size:4rem;color:purple; word-spacing:10px",
+  "font-weight:bold; font-family:cursive;font-size:4rem;color:purple; letter-spacing:10px"
+)
+const calendar = ["January", "February", "March"]

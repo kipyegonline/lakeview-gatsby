@@ -172,11 +172,6 @@ const estate = [
     leader: "Jennifer Githaiga ",
     phone: "0725171227",
   },
-  {
-    estate: "Kabachia (phase ii )",
-    leader: "Karen Wanderi ",
-    phone: "0735186846",
-  },
 
   {
     estate: "Lanet/Pipeline/Stem ",

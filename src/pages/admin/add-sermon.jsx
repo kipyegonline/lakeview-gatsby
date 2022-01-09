@@ -48,7 +48,7 @@ export default function AddSermon() {
     const { value: reading } = sreading
     const { value: message } = smessage
     const { value: date } = sdate
-    console.log(date, title, speaker, theme, reading, message)
+
     if (!date.trim()) {
       setError("Kindly select the date of the sermon")
       setTimeout(() => setError(""), 3000)
@@ -63,7 +63,7 @@ export default function AddSermon() {
       setTimeout(() => setError(""), 3000)
     } else if (
       date.length > 4 &&
-      mainSermon.length &&
+      mainSermon.length > 0 &&
       title.length > 3 &&
       speaker.length > 5
     ) {
@@ -130,7 +130,12 @@ export default function AddSermon() {
         <Grid xs={12} md={6} lg={6} item>
           <form
             onSubmit={handleSubmit}
-            style={{ maxWidth: 400, padding: 16, width: "100%" }}
+            style={{
+              maxWidth: 600,
+              padding: 16,
+              width: "100%",
+              margin: ".25rem auto",
+            }}
             ref={form}
           >
             <Typography variant="h5" align="center">
@@ -220,16 +225,17 @@ export default function AddSermon() {
                 <CircularProgress color="primary" size="3rem" />
               </Box>
             )}
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              disabled={spinner}
-              style={style}
-            >
-              Publish Sermon
-            </Button>
-
+            {!!mainSermon.length && (
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                disabled={spinner}
+                style={style}
+              >
+                Publish Sermon
+              </Button>
+            )}
             <Divider />
           </form>
         </Grid>

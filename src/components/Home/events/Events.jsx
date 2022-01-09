@@ -14,36 +14,25 @@ import {
   ListItem,
   List,
   ListItemIcon,
-  ListAvatar,
   ListItemText,
   Typography,
-  IconButton,
-  Hidden,
   Box,
+  IconButton,
   Divider,
-  ListItemAvatar,
 } from "@material-ui/core"
-import Calendar from "@material-ui/icons/CalendarToday"
-import User from "@material-ui/icons/AccountCircle"
 
+import User from "@material-ui/icons/AccountCircle"
+import Pagination from "@material-ui/lab/Pagination"
 import give from "../../../images/assets/img/PAYBILL.jpg"
 import coop from "../../../images/assets/img/bankAccount.jpg"
 import delton from "../../../images/assets/img/pstdelton.jpg"
-import jp from "../../../images/assets/img/newlcc/jp_psd.jpg"
-import harry from "../../../images/assets/img/2019/harry.jpg"
+
 import harry2 from "../../../images/assets/img/newlcc/IMG-20200813-WA0002.jpg"
 import rachael from "../../../images/assets/img/newlcc/IMG-20200813-WA0000.jpg"
 import sam from "../../../images/assets/img/newlcc/sam.jpg"
 import churcharea from "../../../images/assets/img/churcharea.jpg"
 
 const Events = ({ events }) => {
-  function handleModal() {
-    $("#giveModal").modal({
-      show: true,
-      keyboard: true,
-    })
-  }
-
   return (
     <>
       <div className="row bg-light">
@@ -55,17 +44,31 @@ const Events = ({ events }) => {
 }
 export default Events
 //up coming events
-export const UpcomingEvents = ({ events }) => {
+export const UpcomingEvents = ({ events, fetchEvent }) => {
+  const [currentM, setCurrent] = React.useState(new Date().getMonth())
+  const handleChange = (e, p) => {
+    if (currentM !== p - 1) fetchEvent(p)
+    setCurrent(p - 1)
+  }
   return (
-    <Grid container spacing={2} alignItems="flex-start" justify="space-around">
-      <Hidden xsUp>
-        <Grid item md={4} lg={4} xs={12}></Grid>
-      </Hidden>
-      <Grid item md={8} lg={8} xs={12}>
+    <Grid
+      container
+      spacing={2}
+      style={{ maxWidth: 600 }}
+      alignItems="flex-start"
+      justify="space-around"
+    >
+      <Grid item xs={12}>
         <Typography align="center" variant="h6" className="my-2">
-          Upcoming events
+          Upcoming events - {months[currentM]}
         </Typography>
         <EventsTable events={events} />
+        <Pagination
+          count={12}
+          page={currentM + 1}
+          onChange={handleChange}
+          color="primary"
+        />
       </Grid>
     </Grid>
   )
@@ -77,15 +80,17 @@ const EventsTable = ({ events = [] }) => (
         <TableRow>
           <TableCell>#</TableCell>
           <TableCell>Event</TableCell>
-          <TableCell>Details</TableCell>
-          <TableCell>Venue</TableCell>
+
           <TableCell>Date</TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
-        {events.map((event, i) => (
-          <EventTable key={event.id} index={i} {...event} />
-        ))}
+        {events
+          .sort((a, b) => new Date(a.date) - new Date(b.date))
+          .filter(event => new Date(event.date) >= new Date())
+          .map((event, i) => (
+            <EventTable key={event.id} index={i} {...event} />
+          ))}
       </TableBody>
     </Table>
   </TableContainer>
@@ -94,9 +99,8 @@ const EventTable = ({ index, event, date, details, venue }) => (
   <TableRow>
     <TableCell>{index + 1}.</TableCell>
     <TableCell>{event}</TableCell>
-    <TableCell>{details}</TableCell>
-    <TableCell>{venue}</TableCell>
-    <TableCell>{moment(date).format("dddd,MMMM Do, h:mm")}</TableCell>
+
+    <TableCell>{moment(date).format("dddd,MMMM Do, YYYY")}</TableCell>
   </TableRow>
 )
 //coming up
@@ -233,13 +237,7 @@ export const QuickContacts = () => (
 
         <ListItemText primary="Rev. Delton Orgeness" secondary="0726907931" />
       </ListItem>
-      <ListItem dense divider>
-        <ListItemIcon>
-          <Avatar src={jp} />
-        </ListItemIcon>
 
-        <ListItemText primary="Pastor John Paul" secondary="0771308750" />
-      </ListItem>
       <ListItem dense divider>
         <ListItemIcon>
           <Avatar src={rachael} />
@@ -306,3 +304,18 @@ export const Give = () => {
     </Box>
   )
 }
+
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]

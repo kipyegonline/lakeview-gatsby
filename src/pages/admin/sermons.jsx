@@ -41,7 +41,7 @@ export default function Sermons() {
       const { data } = await axios.get(
         "../../server/sermon.php?fetchsermons=true"
       )
-      if (data.length && Array.isArray(data)) {
+      if (data.length || Array.isArray(data)) {
         setTimeout(() => {
           setSpinner(false)
           setSermons(data)
@@ -81,7 +81,7 @@ export default function Sermons() {
       <Typography>
         {" "}
         <ErrorIcon color="secondary" />
-        {loaded ? loaded : "Error fetching sermons"}
+        {loaded ? loaded : "There are no sermons"}
       </Typography>
     </div>
   )
@@ -94,7 +94,7 @@ export default function Sermons() {
           Sermons
         </Typography>
 
-        {sermons.length ? (
+        {!!sermons.length ? (
           <SermonTable
             sermons={sermons}
             deleteSermon={deleteSermon}
@@ -110,7 +110,11 @@ export default function Sermons() {
   )
 }
 
-const SermonTable = ({ sermons, deleteSermon, handleView }) => {
+const SermonTable = ({
+  sermons = [],
+  deleteSermon = f => f,
+  handleView = f => f,
+}) => {
   const [current, setCurrent] = React.useState(0)
 
   const perpage = sermons.length > 10 ? 10 : sermons.length
@@ -137,9 +141,9 @@ const SermonTable = ({ sermons, deleteSermon, handleView }) => {
         </TableHead>
         <TableBody>
           {sermons
-            .slice(start, end)
+            ?.slice(start, end)
 
-            .map((sermon, index) => (
+            ?.map((sermon, index) => (
               <SermonT
                 key={sermon.id}
                 {...sermon}
@@ -150,11 +154,13 @@ const SermonTable = ({ sermons, deleteSermon, handleView }) => {
             ))}
         </TableBody>
       </Table>
-      <PaginationMaker
-        count={pages}
-        page={current + 1}
-        handleChange={handleChange}
-      />
+      {sermons.length > 10 && (
+        <PaginationMaker
+          count={pages}
+          page={current + 1}
+          handleChange={handleChange}
+        />
+      )}
     </TableContainer>
   )
 }

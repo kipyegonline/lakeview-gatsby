@@ -21,10 +21,17 @@ export const ReactSlider = ({ carousels = [] }) => {
   return (
     <Slider {...settings}>
       {carousels.map((caro, index) => (
-        <div key={index}>
+        <div key={index} className="relative">
           <img
             className="d-block img-fluid "
             src={caro.pic}
+            style={{
+              height: "auto",
+              maxHeight: 403,
+              width: "100%",
+
+              objectFit: "cover",
+            }}
             srcSet={`${caro.picSm} 300w,${caro.picMd} 600w,${caro.pic}  803w`}
             alt={caro.caption}
           />

@@ -21,7 +21,7 @@ const saas = [
   },
 ]
 const ServicesPages = () => {
-  const month = new Date().getMonth()
+  const month = new Date().getMonth() + 1
   const getMonth = month => "2021/" + month + "/01"
 
   const [sermons, setSermons] = React.useState([])
@@ -41,9 +41,10 @@ const ServicesPages = () => {
       setLoaded(error.message)
     }
   }
-  const handleMonthClick = month => {
-    setMonth(month)
-    fetchSermons(getMonth(month))
+  const handleMonthClick = clickedmonth => {
+    if (clickedmonth === month) return
+    setMonth(clickedmonth)
+    fetchSermons(getMonth(clickedmonth))
   }
   React.useEffect(() => {
     if (!sermons.length) fetchSermons(getMonth(month))

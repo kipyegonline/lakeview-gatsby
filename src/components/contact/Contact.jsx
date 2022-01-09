@@ -123,14 +123,6 @@ const pastoralStaff = [
   },
 
   {
-    name: "Pastor John Paul",
-    email: "info@lakeviewagc.net",
-    mobile: 771308750,
-    title: "Assistant Pastor -\n  Discipleship and Youth Ministry.",
-    pic: jp,
-    id: 3,
-  },
-  {
     name: "Pastor Rachel Ngetich",
     email: "info@lakeviewagc.net",
     mobile: 721406155,
@@ -222,8 +214,10 @@ const GeneralInfo = () => (
 
 function resizeMap() {
   let w
-  if (globalThis.window) {
+  if (globalThis?.window) {
     w = document.documentElement.clientWidth
+  } else {
+    var globalThis
   }
 
   if (w <= 480) {

@@ -6,6 +6,7 @@ import {
   Card,
   Typography,
 } from "@material-ui/core"
+import Alert from "@material-ui/lab/Alert"
 import React from "react"
 import $ from "jquery"
 import Layout from "../../components/layout"
@@ -21,14 +22,17 @@ export default function AddFasts() {
 const Fasts = () => {
   const [fast, setFast] = React.useState({})
   const [spinner, setSpinner] = React.useState(false)
+  const [success, setSuccess] = React.useState("")
   const form = React.useRef(null)
   const handleChange = e => {
     if (e.target.value) {
+      console.log(e.target.value)
       setFast({ ...fast, [e.target.id]: e.target.value })
     }
   }
   const handleSubmit = e => {
     e.preventDefault()
+    console.log(fast)
     const { title, date, message, subtitle, verse } = fast
     if (title && date && message && subtitle && verse) {
       setSpinner(true)
@@ -41,19 +45,19 @@ const Fasts = () => {
       })
         .then(res => {
           setSpinner(false)
-          console.log(res, "res")
+          setSuccess(res.msg)
           setTimeout(() => {
             setFast({})
-
+            setSuccess("")
             form.current.reset()
-          }, 3000)
+          }, 2000)
         })
         .catch(error => {
           setSpinner(false)
           console.log("error", error)
         })
     } else {
-      alert("Missing values!!!")
+      alert("Missing values-  Confirm date")
     }
   }
   return (
@@ -122,6 +126,11 @@ const Fasts = () => {
           <div className="p-2 m-2 text-center">
             <CircularProgress color="primary" size="3rem" />
           </div>
+        )}
+        {!!success.length && (
+          <Alert severity="success" variant="filled">
+            Fasting added successfully!
+          </Alert>
         )}
         <Button
           variant="contained"

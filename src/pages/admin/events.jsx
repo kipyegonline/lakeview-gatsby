@@ -21,13 +21,6 @@ import {
 import AdminLayout, { PaginationMaker } from "./adminLayout"
 import ErrorIcon from "@material-ui/icons/Error"
 
-const pep = [...Array(20)].map((item, i) => ({
-  id: i + 1,
-  event: "Jules",
-  date: new Date("2021", "01", i + 1).toDateString(),
-  details: "Ay, Dios Mios" + i,
-  venue: "Mark 10:10",
-}))
 /* disable eslint */
 export default function Events() {
   const [events, setEvents] = React.useState([])
@@ -40,7 +33,7 @@ export default function Events() {
       const { data } = await axios.get(
         "../../server/sermon.php?fetchevents=true"
       )
-      if (data.length && Array.isArray(data)) {
+      if (data.length || Array.isArray(data)) {
         setTimeout(() => {
           setSpinner(false)
           setEvents(data)
@@ -87,10 +80,10 @@ export default function Events() {
     <AdminLayout>
       <Box>
         <Typography align="center" variant="h6">
-          Events
+          Events ({events?.length})
         </Typography>
 
-        {events.length ? (
+        {!!events.length ? (
           <EventsTable events={events} deleteEvent={deleteEvent} />
         ) : spinner ? (
           Spinner
@@ -112,7 +105,7 @@ const EventsTable = ({ events, deleteEvent }) => {
   const handleChange = (e, p) => {
     setCurrent(p - 1)
   }
-  console.log(pages, perpage)
+
   return (
     <TableContainer>
       <Table stickyHeader>
@@ -129,8 +122,7 @@ const EventsTable = ({ events, deleteEvent }) => {
         <TableBody>
           {events
             .slice(start, end)
-            .sort((a, b) => new Date(a.date) - new Date(b.date))
-            .filter(event => new Date(event.date) >= new Date())
+
             .map((event, index) => (
               <EventT
                 key={event.id}
@@ -141,12 +133,15 @@ const EventsTable = ({ events, deleteEvent }) => {
             ))}
         </TableBody>
       </Table>
-      <PaginationMaker
-        count={pages}
-        page={current + 1}
-        handleChange={handleChange}
-        defaultPage={current + 1}
-      />
+      {events.length > 10 && (
+        <PaginationMaker
+          count={pages}
+          className="my-2 p-2"
+          page={current + 1}
+          handleChange={handleChange}
+          defaultPage={current + 1}
+        />
+      )}
     </TableContainer>
   )
 }

@@ -71,8 +71,7 @@ const Depts = ({ title, department, name, profile, pic, loaded, func }) => {
           src={pic}
           alt={title}
         />
-        <figcaption> {name}</figcaption>
-        <p> {title}</p>
+        <figcaption className="text-center text-2xl"> {name}</figcaption>
       </figure>
 
       {/* <button className='btn btn-lg btn-warning' data-toggle="collapse" href="#collapseExample">More</button>
@@ -87,7 +86,7 @@ const Depts = ({ title, department, name, profile, pic, loaded, func }) => {
 
 const lcc = [
   {
-    name: "Mrs. Margaret Siele",
+    name: "Margaret Siele",
     title: "Mission's leader",
     department: "Missions deparment",
     pic: outreach,
@@ -96,7 +95,7 @@ const lcc = [
   },
 
   {
-    name: " Mrs. Elizabeth Gathi ",
+    name: " Elizabeth Gathi ",
     title: "Secretary",
     department: "Secretary",
     pic: secretary,
@@ -105,7 +104,7 @@ const lcc = [
   },
 
   {
-    name: "Mrs Celestine Munyasia",
+    name: "Celestine Munyasia",
     title: "Youth leader",
     department: "Youth department",
     pic: youths,
@@ -113,7 +112,7 @@ const lcc = [
       "The youth department plans and oversees all youth activities in the church; it plans and organizes for midweek meetings and fellowships for the youths swell as the young adults fellowship. The department alsoi oversee the counselling for the youth.",
   },
   {
-    name: "Mr. Charles Munyasia",
+    name: "Charles Munyasia",
     title: "Lead",
     department: "Compassion",
     pic: compassion,
@@ -128,7 +127,7 @@ const lcc = [
     profil: "",
   },
   {
-    name: "Mrs. Winnie Logemere",
+    name: "Winnie Logemere",
     title: "Ladies' leader",
     department: "Ladies department",
     pic: elder,
@@ -136,7 +135,7 @@ const lcc = [
       "This department Prepares goals and plans for womens activities in the year. Women's council also implements the goals and plans for women’s activities and raise funds for women’s budget",
   },
   {
-    name: "Mr. Zach Njeru",
+    name: "Zach Njeru",
     title: "Men's leader",
     department: "Men's department",
     pic: men,
@@ -144,7 +143,7 @@ const lcc = [
       "The men’s committee is responsible for organizing Bible studies and man enough series for LakeView AGC men",
   },
   {
-    name: "Mr. Nelson kemboi",
+    name: "Nelson kemboi",
     title: "leader",
     department: "Development Department",
     pic: kemboi,
@@ -153,7 +152,7 @@ const lcc = [
   },
 
   {
-    name: "Ms. Margret Wachira",
+    name: "Margret Wachira",
     title: "Academy chair",
     department: "Lakeview Academy",
     pic: academy,
@@ -161,7 +160,7 @@ const lcc = [
       "The chair of the academy links the pastoral office with the academy, coordinates the development and activities of the Lakeview Academy with the help of the Pastoral staff. The commmittee also chairs CED committee and other CED programmed committees in the church",
   },
   {
-    name: "Mrs Rose Gikonyo",
+    name: "Rose Gikonyo",
     title: "worship leader",
     department: "Worship ministry",
     pic: worship,
@@ -169,7 +168,7 @@ const lcc = [
       "The worship team leads the service in worship; both English and Kiswahili services.",
   },
   {
-    name: "Mr. Andrew Lusaka",
+    name: "Andrew Lusaka",
     title: "Lay leader",
     department: "Laity",
     pic: lusaka,
@@ -178,7 +177,7 @@ const lcc = [
   },
 
   {
-    name: "Mrs Stella Korir",
+    name: "Stella Korir",
     title: "Treasurer",
     department: "Treasurer",
     pic: stella,
@@ -187,7 +186,7 @@ const lcc = [
   },
 
   {
-    name: "Mr. Ngugi Kimani",
+    name: " Ngugi Kimani",
     title: "leader",
     department: "Discipleship",
     pic: fellowship,
@@ -195,7 +194,7 @@ const lcc = [
       "The Home fellowship committe co-ordinates weekly home fellowship held every Wednesday in various zones with Nakuru region",
   },
   {
-    name: "Mrs. Jenniffer Kosgei",
+    name: "Jenniffer Kosgei",
     title: "Children's leader",
     department: "Children",
     pic: children,

@@ -34,7 +34,7 @@ const Footer = () => (
       {" "}
       Copyright &copy; {new Date().getFullYear()} Lakeview Africa Gospel Church.
       All rights reserved.
-      <Link className="ml-5" to="/admin">
+      <Link className="ml-5" target="_blank" to="/admin">
         staff
       </Link>
     </Typography>

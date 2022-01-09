@@ -90,3 +90,6 @@ And Lakeview AGC website.....
 [Lakeview](http://lakeviewagc.net)
 
 <!-- AUTO-GENERATED-CONTENT:END -->
+
+header,layout,index admin location
+contact global

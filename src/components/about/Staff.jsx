@@ -77,12 +77,7 @@ const pastors = [
     pic: delo,
     des: null,
   },
-  {
-    name: "Pastor John Paul Mugendi",
-    title: "Assistant pastor",
-    pic: jp,
-    des: " Discipleship and Youth Ministry.",
-  },
+
   {
     name: "Pastor Rachel Ngetich",
     title: "pastor",

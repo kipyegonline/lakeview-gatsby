@@ -38,7 +38,7 @@ const selectedStyle = {
 
 export const AboutNav = ({ current, setCurrent }) => {
   let w
-  if (globalThis.window) {
+  if (globalThis?.window) {
     w = document.documentElement.clientWidth
   }
 
@@ -52,9 +52,11 @@ export const AboutNav = ({ current, setCurrent }) => {
   const handleClick = () => {
     window.scrollTo({ behavior: "smooth", top: 0 })
   }
-  let links
-  if (globalThis.window) {
+  let links = []
+  if (globalThis?.window) {
     links = document.querySelectorAll(".about-link")
+  } else {
+    var globalThis
   }
 
   if (w < 480) {
