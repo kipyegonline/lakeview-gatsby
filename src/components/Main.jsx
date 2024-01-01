@@ -13,24 +13,7 @@ import slide3 from "../images/assets/img/2022/slide3_lg.jpg"
 import slide3md from "../images/assets/img/2022/slide3_md.jpg"
 import slide3sm from "../images/assets/img/2022/slide3_sm.jpg"
 import slide4 from "../images/assets/img/2022/slide4_lg.jpg"
-import slide4md from "../images/assets/img/2022/slide4_md.jpg"
-import slide4sm from "../images/assets/img/2022/slide4_sm.jpg"
-import slide5 from "../images/assets/img/2022/slide5_lg.jpg"
-import slide5md from "../images/assets/img/2022/slide5_md.jpg"
-import slide5sm from "../images/assets/img/2022/slide5_sm.jpg"
-import slide6 from "../images/assets/img/2022/slide6_lg.jpg"
-import slide6md from "../images/assets/img/2022/slide6_md.jpg"
-import slide6sm from "../images/assets/img/2022/slide6_sm.jpg"
-import slide7 from "../images/assets/img/2022/slide7_lg.jpg"
-import slide7md from "../images/assets/img/2022/slider7_md.jpg"
-import slide7sm from "../images/assets/img/2022/slider7_sm.jpg"
-import slide8lg from "../images/assets/img/2022/slider8_lg.jpg"
-import slide8md from "../images/assets/img/2022/slider8_lg.jpg"
-import slide8sm from "../images/assets/img/2022/slider8_md.jpg"
-import slide9 from "../images/assets/img/2022/slider9_sm.jpg"
-import slide10 from "../images/assets/img/2022/slider_10.jpg"
-import slide11 from "../images/assets/img/2022/academy/acad6.jpg"
-import slide12 from "../images/assets/img/2022/academy/acad2.jpg"
+
 import im1 from "../images/assets/img/2024/IMG-20231230-WA0011.jpg"
 import im2 from "../images/assets/img/2024/IMG-20231230-WA0004.jpg"
 import im3 from "../images/assets/img/2023/IMG-20230111-WA0006.jpg"
@@ -41,7 +24,7 @@ import im7 from "../images/assets/img/2023/lakeviewsunday.jpg"
 import im8 from "../images/assets/img/2024/IMG-20231230-WA0003.jpg"
 import im9 from "../images/assets/img/2024/IMG-20231230-WA0007.jpg"
 import im10 from "../images/assets/img/2023/IMG-20230112-WA0002.jpg"
-import theme2023 from "../images/assets/img/2023/IMG-20230111-WA0007.jpg"
+
 import theme2024 from "../images/assets/img/2024/IMG-20231230-WA0008.jpg"
 import companionshipImg from "../images/assets/img/2024/IMG-20231230-WA0005.jpg"
 const day = new Date().getDay() % 2 === 0
@@ -68,7 +51,7 @@ export const carosel = [
     pic: im2,
     picMd: im2,
     picSm: im2,
-    caption: "Rev Isaac Saoshiro",
+    caption: "Rev Isaac Saoshiro, the missionary who planted Lakeview AGC",
     active: false,
   },
   {
@@ -98,7 +81,7 @@ export const carosel = [
     pic: im6,
     picMd: im6,
     picSm: im6,
-    caption: "Shaoshiro Christian Education centre",
+    caption: "Saoshiro Christian Education centre",
     active: false,
   },
   {

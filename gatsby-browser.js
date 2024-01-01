@@ -8,7 +8,7 @@
 //import "antd/dist/antd.css"
 import "slick-carousel/slick/slick.css"
 import "slick-carousel/slick/slick-theme.css"
-import ReactGa from "react-ga"
+
 import "mdbootstrap/css/mdb.min.css"
 
 import "bootstrap"
@@ -18,8 +18,13 @@ import "./src/css/lakeview.css"
 import "./src/css/tailwind.css"
 import "./src/scss/lakeview.css"
 
-const TrackingId = "UA-138672264-2"
-ReactGa.initialize(TrackingId)
-ReactGa.pageview(window.location.pathname)
-
 //G-P9ZM6X4CQG
+/**<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YHJS1YC35L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-YHJS1YC35L');
+</script> */

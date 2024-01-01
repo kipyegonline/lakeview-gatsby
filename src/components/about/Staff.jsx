@@ -52,8 +52,8 @@ const Pastor = ({ name, title, pic, des }) => (
   <Grid
     item
     xs={12}
-    md={4}
-    lg={4}
+    md={6}
+    lg={6}
     style={{ width: "33%", height: "auto", margin: "1rem 0" }}
   >
     <Card>
@@ -84,11 +84,11 @@ const pastors = [
     title: "Pastor",
     pic: rachael,
     des: " Children,Missions, Evangelism and Compassion.",
-  },
+  } /*
   {
     name: "Rick Kinyanjui",
     title: "Youth Pastor ",
     pic: rickyG,
     des: null,
-  },
+  },*/,
 ]
