@@ -70,38 +70,7 @@ const EmbedYouTube = ({ sermons, loaded, month }) => (
             </ListItemIcon>
             <ListItemText primary="Lakeview AGC" />
           </ListItem>
-          <ListItem
-            button
-            selected
-            className="my-2 w-100"
-            onClick={() => window.open("https://twitter.com/lakeviewagc")}
-          >
-            <ListItemIcon>
-              <Avatar>
-                <Twitter color="primary" fontSize="large" />
-              </Avatar>
-            </ListItemIcon>
-            <ListItemText primary="Lakeview AGC" />
-          </ListItem>
-          <ListItem
-            button
-            selected
-            className="my-2 w-100"
-            onClick={() =>
-              window.open("https://www.instagram.com/lakeviewagcnakuru/")
-            }
-          >
-            <ListItemIcon>
-              <Avatar>
-                <IG color="error" fontSize="large" />
-              </Avatar>
-            </ListItemIcon>
-            <ListItemText primary="Lakeview AGC" />
-          </ListItem>
         </List>
-        <Card>
-          <CardMedia image={onlineWorship} component="img" height={300} />
-        </Card>
       </Grid>
       <Grid item sm={12} md={9} lg={9} className="my-2 ">
         {sermons.length ? (

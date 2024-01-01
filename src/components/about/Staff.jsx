@@ -18,6 +18,7 @@ import rachael from "../../images/assets/img/newlcc/IMG-20200813-WA0000.jpg"
 import harry from "../../images/assets/img/newlcc/harry.jpg"
 import sam from "../../images/assets/img/newlcc/sam.jpg"
 import logoG from "../../images/assets/img/logoG.jpg"
+import rickyG from "../../images/assets/img/2022/IMG-20221102-WA0004.jpg"
 
 const useStyles = () =>
   makeStyles({
@@ -73,15 +74,21 @@ export default PStaff
 const pastors = [
   {
     name: "Rev. Delton Orgeness",
-    title: "Senior pastor",
+    title: "Senior Pastor",
     pic: delo,
     des: null,
   },
 
   {
     name: "Pastor Rachel Ngetich",
-    title: "pastor",
+    title: "Pastor",
     pic: rachael,
     des: " Children,Missions, Evangelism and Compassion.",
+  },
+  {
+    name: "Rick Kinyanjui",
+    title: "Youth Pastor ",
+    pic: rickyG,
+    des: null,
   },
 ]

@@ -1,9 +1,9 @@
-$secondary: #ddd;
-$footer: #ccc;
-@import "~bootstrap/scss/bootstrap";
+/*$secondary: #ddd;
+$footer: #ccc;*/
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 .footer-bg {
-  background: $footer;
+  background: #ccc;
 }
 .purped {
   border-bottom: 1px solid rebeccapurple;

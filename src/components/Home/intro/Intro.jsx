@@ -20,6 +20,7 @@ import ErrorIcon from "@material-ui/icons/Error"
 import fasting from "../../../images/assets/img/2021/fastingwide.png"
 
 import theme from "../../../images/assets/img/2022/theme_of_the_year.jpg"
+import theme2024 from "../../../images/assets/img/2024/IMG-20231230-WA0008.jpg"
 import { makeStyles, StylesContext } from "@material-ui/styles"
 import { Pagination } from "@material-ui/lab"
 const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
@@ -55,30 +56,27 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
               </strong>{" "}
             </Typography>
             <Typography variant="body2" className="font-weight-bold mb-2">
-              <q> WALKING IN OBEDIENCE TO THE WORD </q>
-            </Typography>
-            <Typography className="mt-2 text-center text-bold">
-              <b> 1 John 2:3</b>
+              <q> A Heart for the Harvest </q>
             </Typography>
           </Card>
         </Grid>
 
         {/* grid 2*/}
-        <Grid className=" mr-2    my-2  p-2 mt-2 " xs={12} md={4} lg={4} item>
+        <Grid
+          className=" mr-2    my-2  p-2 mt-2 "
+          sx={{ border: "1px solid red" }}
+          xs={12}
+          md={4}
+          lg={4}
+          item
+        >
           <Card className="p-1">
             <Typography className=" r mb-2">
               <strong>
                 Scripture of the Year - {new Date().getFullYear()}
               </strong>
             </Typography>
-            <Typography>
-              {" "}
-              <q>
-                {" "}
-                We know that we have come to kow him if we obey his commands.
-              </q>
-              <strong className="ml-3"> 1 John 2:3</strong>
-            </Typography>
+            <Typography className="font-semibold">Mathew 9:35</Typography>
           </Card>
         </Grid>
         {/* grid 3*/}
@@ -88,7 +86,8 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
             {" "}
             <Typography
               variant="body1"
-              className=" text-heading text-uppercase text-lg font-weight-bold   mb-2 "
+              style={{ fontWeight: "bold" }}
+              className=" text-heading text-uppercase text-lg font-bold   mb-2 "
             >
               {" "}
               Sunday Service
@@ -371,5 +370,15 @@ const imgStyles = makeStyles({
 })
 export const ThemeOfTheYear = () => {
   const styles = imgStyles()
-  return <img className={styles.img} src={theme} alt="Theme of the year 2022" />
+  const year = new Date().getFullYear()
+  return (
+    <div className="p-4">
+      <h6 className="py-2">Happy new Year {year} from Lakeview AGC</h6>
+      <img
+        className={styles.img}
+        src={theme2024}
+        alt={`Theme of the year ${year}`}
+      />
+    </div>
+  )
 }

@@ -109,7 +109,7 @@ export default class Fellowship extends React.Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {estate.map((est, i) => (
+                  {estate?.map((est, i) => (
                     <TableList
                       key={i}
                       {...est}
@@ -189,11 +189,6 @@ const estate = [
     phone: "0722657375",
   },
 
-  {
-    estate: " Milimani - Showground",
-    leader: "Richard Kalya",
-    phone: "0722666953",
-  },
   {
     estate: "Naka A",
     leader: "Betty Akala ",

@@ -19,6 +19,8 @@ import elder from "../../images/assets/img/newlcc/elder.jpg"
 import kemboi from "../../images/assets/img/newlcc/kemboi.jpg"
 import lusaka from "../../images/assets/img/newlcc/lusaka.jpg"
 import stella from "../../images/assets/img/newlcc/stella.jpg"
+import annkemboi from "../../images/assets/img/newlcc/annkemboi.jpg"
+import RisperKorir from "../../images/assets/img/newlcc/IMG-20230114-WA0000.jpg"
 import "./lcc.css"
 //images
 
@@ -123,7 +125,7 @@ const lcc = [
     name: "Risper Korir",
     title: "Leader",
     department: "Evangelism",
-    pic: outreach,
+    pic: RisperKorir,
     profil: "",
   },
   {
@@ -186,10 +188,10 @@ const lcc = [
   },
 
   {
-    name: " Ngugi Kimani",
+    name: " Ann Kemboi",
     title: "leader",
-    department: "Discipleship",
-    pic: fellowship,
+    department: "Discipleship leader",
+    pic: annkemboi,
     profile:
       "The Home fellowship committe co-ordinates weekly home fellowship held every Wednesday in various zones with Nakuru region",
   },

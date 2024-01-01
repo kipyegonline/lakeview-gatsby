@@ -20,10 +20,13 @@ const IndexPage = () => {
   const [fast, setFast] = React.useState({})
   const [fasts, setFasts] = React.useState([])
   const [events, setEvents] = React.useState([])
-  const [welcome, setWelcome] = React.useState("Theme of the year 2022.")
+  const [welcome, setWelcome] = React.useState(
+    `Theme of the year ${new Date().getFullYear()}`
+  )
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
   const [greeted, setGreeted] = React.useState(false)
+  const [loader, setLoader] = React.useState(false)
   const month = new Date().getMonth()
 
   const fetchData = async (url, callback) => {
@@ -67,17 +70,11 @@ const IndexPage = () => {
     let day = 6e4 * 60 * 24
     let now = new Date().getTime()
     let prayerday = localStorage.getItem("prayerday")
-    const newYearMessage = localStorage.getItem("new-year-2022")
 
     if (prayerday) {
       if (now - Number(prayerday) > day) {
         localStorage.setItem("prayerday", JSON.stringify(now))
 
-        if (newYearMessage && (date > 9 || date < 31)) {
-          setGreeted(true)
-          setOpen(true)
-          setWelcome("20 Days of Prayer and Fasting")
-        }
         handleUserCount(0)
       }
     } else {
@@ -91,34 +88,40 @@ const IndexPage = () => {
   // close modal
   const closeModal = () => {
     setOpen(false)
-    setGreeted(false)
   }
   // Events happening
   const fetchEvents = (month = "") => {
+    setLoader(true)
     fetch(`./server/sermon.php?fetchevents=true&month=${month}`)
       .then(res => res.json())
       .then(data => {
+        setLoader(false)
         if (Array.isArray(data) || data.length) {
-          if (data.length) setEvents(data)
+          setEvents(data)
         }
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        setLoader(false)
+        console.log(error)
+      })
   }
 
   // new Year theme
   const newYearTheme = () => {
-    const newYearMessage = localStorage.getItem("new-year-2022")
-    if (!!!newYearMessage) {
+    const currentYear = new Date().getFullYear()
+    const newYearMessage = localStorage.getItem(`new-year-${currentYear}`)
+    if (!!!newYearMessage && new Date().getMonth() === 0) {
       setOpen(true)
-      localStorage.setItem("new-year-2022", "visited")
+      localStorage.setItem(`new-year-${currentYear}`, "visited")
+      localStorage.removeItem(`new-year-${currentYear - 1}`, "visited")
     }
   }
   React.useEffect(() => {
     //recordMetrics()
     //fetch events
     fetchEvents(month + 1)
-    handleUserDate("", date)
-    setTimeout(recordMetrics, 3000)
+
+    //setTimeout(recordMetrics, 3000)
     setTimeout(newYearTheme, 3000)
   }, [])
 
@@ -129,13 +132,7 @@ const IndexPage = () => {
       />
 
       <UseModal open={open} setOpen={closeModal} welcome={welcome}>
-        {greeted ? (
-          !!fast?.id && (
-            <Fasting {...fast} getDate={handleUserDate} selected={selected} />
-          )
-        ) : (
-          <ThemeOfTheYear />
-        )}
+        <ThemeOfTheYear />
       </UseModal>
       <Home
         carosel={carosel}
@@ -144,6 +141,7 @@ const IndexPage = () => {
         selected={selected}
         events={events}
         fetchEvent={fetchEvents}
+        loader={loader}
         getDate={handleUserDate}
       />
     </Layout>

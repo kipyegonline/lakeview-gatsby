@@ -93,3 +93,5 @@ And Lakeview AGC website.....
 
 header,layout,index admin location
 contact global
+
+export NODE_OPTIONS=--openssl-legacy-provider

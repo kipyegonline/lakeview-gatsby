@@ -139,7 +139,7 @@ const Nav = ({ match }) => {
                 <IconButton color="secondary" size="small" className="m-0 p-0">
                   {" "}
                   <SchoolIcon size="small" className="mr-2" />
-                  Lakeview Academy
+                  Saoshiro Education
                 </IconButton>
               </NavLink>
             </li>

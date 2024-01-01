@@ -8,11 +8,13 @@ import {
   Typography,
   Paper,
 } from "@material-ui/core"
-import Church from "../../images/assets/img/churcharea.jpg"
+import churcharea2 from "../../images/assets/img/2022/IMG-20220112-WA0004.jpg"
+import churcharea from "../../images/assets/img/2022/IMG-20220112-WA0003.jpg"
 const History = () => {
   function slideToggle(e) {
     $("#brief").slideToggle(2000)
   }
+  const today = new Date().getDay() % 2 === 0
   return (
     <Grid className="mb-5">
       <Box>
@@ -20,7 +22,7 @@ const History = () => {
           Brief History of Lakeview AGC
         </Typography>
         <CardMedia
-          src={Church}
+          src={today ? churcharea : churcharea2}
           title="Church area"
           component="img"
           height={200}
