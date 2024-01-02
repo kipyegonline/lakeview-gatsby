@@ -96,7 +96,7 @@ const IndexPage = () => {
       .then(res => res.json())
       .then(data => {
         setLoader(false)
-        if (Array.isArray(data) || data.length) {
+        if (Array.isArray(data) && data?.length > 0) {
           setEvents(data)
         }
       })
@@ -121,7 +121,7 @@ const IndexPage = () => {
     //fetch events
     fetchEvents(month + 1)
 
-    //setTimeout(recordMetrics, 3000)
+    setTimeout(recordMetrics, 3000)
     setTimeout(newYearTheme, 3000)
   }, [])
 

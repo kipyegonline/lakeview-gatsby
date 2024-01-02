@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Lakeview Africa Gospel Church website - `,
+    title: `Lakeview Africa Gospel Church website `,
     description: `Lakeview AGC-Section 58, website`,
     author: `@kipyegonline`,
   },
@@ -30,6 +30,7 @@ module.exports = {
         icon: `src/images/favecon.png`, // This path is relative to the root of the site.
       },
     },
+
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
@@ -42,6 +43,5 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
-    ,
   ],
 }

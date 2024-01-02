@@ -18,7 +18,7 @@ import { Pagination, PaginationItem } from "@material-ui/lab"
 
 export default function AdminLayout({ children }) {
   const [isLoggedIn, setLoggedIn] = React.useState(undefined)
-  const [user, setUser] = React.useState({})
+  const [user, setUser] = React.useState(null)
   const [visits, setVisit] = React.useState({})
   const activeStyle = { color: "red" }
   const handleLogOut = () => {
@@ -37,6 +37,7 @@ export default function AdminLayout({ children }) {
 
     if (luser !== null) {
       setLoggedIn(true)
+      setUser(luser)
     } else {
       setLoggedIn(false)
       navigate("/admin")
@@ -45,6 +46,11 @@ export default function AdminLayout({ children }) {
   React.useEffect(() => {
     if (visits.month === undefined) fetchStats()
   }, [visits?.month])
+  const sx = {
+    textDecoration: "none",
+    color: "inherit",
+    cursor: "pointer",
+  }
   const spinner = (
     <Box className="p-4 mx-auto my-4">
       <Typography className="text-center">
@@ -74,18 +80,14 @@ export default function AdminLayout({ children }) {
           }}
         >
           <Typography className="font-weight-bold p-2 alert alert-info">
-            Admin Area({user?.username})
+            Admin Area({user?.username ?? ""})
           </Typography>
           <List alignItems="flex-start">
             <ListItem divider>
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link
-                activeStyle={activeStyle}
-                to="/admin/add-sermon"
-                className="nav-ad"
-              >
+              <Link activeStyle={activeStyle} to="/admin/add-sermon" style={sx}>
                 Add Sermon
               </Link>
             </ListItem>
@@ -93,11 +95,7 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link
-                activeStyle={activeStyle}
-                to="/admin/add-event"
-                className="nav-ad"
-              >
+              <Link activeStyle={activeStyle} to="/admin/add-event" style={sx}>
                 Add Event
               </Link>
             </ListItem>
@@ -105,11 +103,7 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link
-                activeStyle={activeStyle}
-                to="/admin/sermons"
-                className="nav-ad"
-              >
+              <Link activeStyle={activeStyle} to="/admin/sermons" style={sx}>
                 View Sermons
               </Link>
             </ListItem>
@@ -118,11 +112,7 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link
-                activeStyle={activeStyle}
-                to="/admin/events"
-                className="nav-ad"
-              >
+              <Link activeStyle={activeStyle} to="/admin/events" style={sx}>
                 View events
               </Link>
             </ListItem>
@@ -130,11 +120,7 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link
-                activeStyle={activeStyle}
-                to="/admin/add-fasts"
-                className="nav-ad"
-              >
+              <Link activeStyle={activeStyle} to="/admin/add-fasts" style={sx}>
                 Add prayer and fasting
               </Link>
             </ListItem>
@@ -142,7 +128,7 @@ export default function AdminLayout({ children }) {
               <ListItemIcon>
                 <ArrowIcon />
               </ListItemIcon>
-              <Link to="/admin/" className="nav-ad" onClick={handleLogOut}>
+              <Link to="/admin/" style={sx} onClick={handleLogOut}>
                 Log out
               </Link>
             </ListItem>
@@ -163,6 +149,7 @@ export default function AdminLayout({ children }) {
           {children}
         </Grid>
       </Grid>
+
       <style jsx>{`
         .nav-ad {
           text-decoration: none;
@@ -176,6 +163,7 @@ export default function AdminLayout({ children }) {
       `}</style>
     </Layout>
   )
+  //return admin
   return isLoggedIn ? admin : isLoggedIn === undefined ? spinner : <Admin />
 }
 

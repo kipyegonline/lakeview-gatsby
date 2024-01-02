@@ -138,6 +138,7 @@ export default function AddEvent() {
             <Button
               variant="contained"
               color="primary"
+              disabled={spinner}
               type="submit"
               style={{ width: "100%" }}
               startIcon={<AddIcon />}

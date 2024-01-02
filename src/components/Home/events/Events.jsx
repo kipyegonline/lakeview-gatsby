@@ -73,36 +73,58 @@ export const UpcomingEvents = ({ events, fetchEvent }) => {
     </Grid>
   )
 }
-const EventsTable = ({ events = [] }) => (
-  <TableContainer>
-    <Table size="small">
-      <TableHead>
-        <TableRow>
-          <TableCell>#</TableCell>
-          <TableCell>Event</TableCell>
+const EventsTable = ({ events = [] }) => {
+  const handleSort = events => {
+    let fixed = events.map(event => {
+      if (event.venue.length > 0 && event.venue.includes("-")) {
+        const [a, b] = event.venue.split("-")
+        const nextDate = new Date(
+          new Date(event.date).setDate(b)
+        ).toLocaleDateString()
+        return { ...event, end_date: nextDate }
+      }
+      return event
+    })
+    return fixed
+  }
+  return (
+    <TableContainer>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>#</TableCell>
+            <TableCell>Event</TableCell>
 
-          <TableCell>Date</TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {events
-          .sort((a, b) => new Date(a.date) - new Date(b.date))
-          .filter(event => new Date(event.date) >= new Date())
-          .map((event, i) => (
-            <EventTable key={event.id} index={i} {...event} />
-          ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-)
-const EventTable = ({ index, event, date, details, venue }) => (
-  <TableRow>
-    <TableCell>{index + 1}.</TableCell>
-    <TableCell>{event}</TableCell>
+            <TableCell>Date</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {handleSort(events)
+            .slice()
+            .sort((a, b) => new Date(a.date) - new Date(b.date))
+            .filter(event => new Date(event.date) >= new Date())
+            .map((event, i) => (
+              <EventTable key={event.id} index={i} {...event} />
+            ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+  )
+}
+const EventTable = ({ index, event, date, details, venue, end_date = "" }) => {
+  return (
+    <TableRow>
+      <TableCell>{index + 1}.</TableCell>
+      <TableCell>{event}</TableCell>
 
-    <TableCell>{moment(date).format("dddd,MMMM Do, YYYY")}</TableCell>
-  </TableRow>
-)
+      <TableCell>
+        {moment(date).format("dddd, Do")}
+        {venue.includes("-") ? ` - ${moment(end_date).format("dddd, Do")}` : ""}
+      </TableCell>
+    </TableRow>
+  )
+}
+
 //coming up
 const ComingUp = () => (
   <div className="col-md-8 card mb-2">

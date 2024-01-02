@@ -47,7 +47,15 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
       >
         {/* grid one*/}
         <Grid item className="p-2 mb-1 mx-2 my-2" xs={12} md={4} lg={4}>
-          <Card className="p-4">
+          <Card
+            className="p-4"
+            style={{
+              minHeight: 160,
+
+              padding: "1rem",
+              textAlign: "center",
+            }}
+          >
             {" "}
             <Typography className=" r " variant="body1">
               {" "}
@@ -64,25 +72,43 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
         {/* grid 2*/}
         <Grid
           className=" mr-2    my-2  p-2 mt-2 "
-          sx={{ border: "1px solid red" }}
+          // sx={{ border: "1px solid red" }}
           xs={12}
           md={4}
           lg={4}
           item
         >
-          <Card className="p-1">
+          <Card
+            className="p-1 "
+            style={{
+              minHeight: 160,
+
+              padding: "1rem",
+              textAlign: "center",
+            }}
+          >
             <Typography className=" r mb-2">
               <strong>
                 Scripture of the Year - {new Date().getFullYear()}
               </strong>
             </Typography>
-            <Typography className="font-semibold">Mathew 9:35</Typography>
+            <Typography className="font-semibold">
+              Mathew 9:35-Mathew 10:1
+            </Typography>
           </Card>
         </Grid>
         {/* grid 3*/}
         <Grid xs={12} md={3} lg={3} item className="d p-2">
           {/*<!-- Responsive section -->*/}
-          <Card className=" p-2 m-2 ">
+          <Card
+            className=" p-2 m-2 "
+            style={{
+              minHeight: 150,
+
+              padding: "1rem",
+              textAlign: "center",
+            }}
+          >
             {" "}
             <Typography
               variant="body1"
@@ -118,13 +144,13 @@ const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
           </>
         )}
 
-      <Divider />
+      <Divider className="mt-4" />
       <Celebrating churcharea={churcharea[0]} />
-      <Divider />
+      <Divider className="mt-4" />
       <Fellowship churcharea={churcharea[1]} />
-      <Divider />
+      <Divider className="mt-4" />
       <Companionship churcharea={churcharea[2]} />
-      <Divider />
+      <Divider className="mt-4" />
       <Missions churcharea={churcharea[3]} />
     </Box>
   )
@@ -232,6 +258,10 @@ const Missions = ({ churcharea }) => (
         />{" "}
       </Box>
       <Typography>
+        We were honoured to have <b>Rev Isaac Saoshiro</b>, the founder of
+        Lakeview AGC.{" "}
+      </Typography>
+      <Typography>
         {" "}
         We thank God for His blessings and for allowing us to reach the people
         of Turkana and Kakuma refugee camps.We are currently partnering with AGC
@@ -304,7 +334,7 @@ export const Fasting = ({
         className="text-center text-transform my-1 p-0 purped"
         title={
           <Typography variant="h6">
-            20 Days of Prayer and Fasting {"       "}
+            21 Days of Prayer and Fasting {"       "}
           </Typography>
         }
       />

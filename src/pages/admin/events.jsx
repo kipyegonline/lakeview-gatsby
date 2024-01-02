@@ -33,13 +33,15 @@ export default function Events() {
       const { data } = await axios.get(
         "../../server/sermon.php?fetchevents=true"
       )
-      if (data.length || Array.isArray(data)) {
+      if (Array.isArray(data)) {
         setTimeout(() => {
           setSpinner(false)
           setEvents(data)
         }, 2000)
       } else {
-        throw new Error("There are no events at the moment. Check back soon")
+        throw new Error(
+          "There are no events at the moment. add events on the tab"
+        )
       }
     } catch (error) {
       setSpinner(false)

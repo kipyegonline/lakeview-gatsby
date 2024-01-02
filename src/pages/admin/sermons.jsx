@@ -41,7 +41,7 @@ export default function Sermons() {
       const { data } = await axios.get(
         "../../server/sermon.php?fetchsermons=true"
       )
-      if (data.length || Array.isArray(data)) {
+      if (Array.isArray(data)) {
         setTimeout(() => {
           setSpinner(false)
           setSermons(data)
