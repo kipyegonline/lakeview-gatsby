@@ -83,7 +83,7 @@ const Nav = ({ match }) => {
                 About Us{" "}
               </NavLink>
             </li>
-            <li className="nav-item px-lg-2">
+           {/* <li className="nav-item px-lg-2">
               <NavLink
                 activeStyle={style}
                 className="nav-link text-uppercase  text-expanded"
@@ -92,7 +92,7 @@ const Nav = ({ match }) => {
                 <FontAwesomeIcon size="lg" className="mr-2" icon="users" />
                 Ministries
               </NavLink>
-            </li>
+          </li>*/}
             <li className="nav-item px-lg-2">
               <NavLink
                 activeStyle={style}
