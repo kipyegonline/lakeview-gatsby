@@ -141,7 +141,7 @@ class Academy extends React.Component {
           className="text-center p-2 my-2 text-lg text-uppercase mb-3"
           style={{ margin: 0.5 }}
         >
-          Saoshiro Christian Education Centre
+          Lakeview AGC Academy
         </h2>
         <div className="row">
           <div className="col-md-12  " style={style}>
@@ -216,8 +216,8 @@ const AboutAcademy = () => (
         Vision{" "}
       </Typography>
       <p className="text-center  p-2">
-        Saoshiro Christian Education Centre (formerly Lakeview academy) seeks to
-        be a leading Christian based institution of Academic Excellence.
+        Lakeview academy seeks to be a leading Christian based institution of
+        Academic Excellence.
       </p>
     </div>
     <div className="col-md-6 my-2">

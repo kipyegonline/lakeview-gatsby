@@ -12,8 +12,8 @@ import {
 } from "@material-ui/core"
 
 import { AboutNav } from "./About"
-import church from "../../images/assets/img/backimage.jpg"
-import frontchurch from "../../images/assets/img/2022/IMG-20220112-WA0009.jpg"
+import church from "../../images/assets/img/2024/IMG-20231230-WA0006.jpg"
+import frontchurch from "../../images/assets/img/2024/IMG-20231230-WA0006.jpg"
 
 export const WhoWeAreTab = () => {
   const today = new Date().getDay() % 2 === 0

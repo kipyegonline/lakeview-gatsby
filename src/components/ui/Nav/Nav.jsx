@@ -83,7 +83,7 @@ const Nav = ({ match }) => {
                 About Us{" "}
               </NavLink>
             </li>
-           {/* <li className="nav-item px-lg-2">
+            {/* <li className="nav-item px-lg-2">
               <NavLink
                 activeStyle={style}
                 className="nav-link text-uppercase  text-expanded"
@@ -139,7 +139,7 @@ const Nav = ({ match }) => {
                 <IconButton color="secondary" size="small" className="m-0 p-0">
                   {" "}
                   <SchoolIcon size="small" className="mr-2" />
-                  Saoshiro Education
+                 Lakeview AGC academy
                 </IconButton>
               </NavLink>
             </li>
