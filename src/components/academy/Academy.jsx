@@ -38,11 +38,11 @@ import acad7 from "../../images/assets/img/2022/academy/acad7.jpg"
 import acad8 from "../../images/assets/img/2022/academy/acad8.jpg"
 import MultiCarousel from "../MultiCarousel/Carousel"
 import im1 from "../../images/assets/img/2023/IMG-20230111-WA0003.jpg"
-import im2 from "../../images/assets/img/2024/IMG-20231230-WA0012.jpg"
-import im3 from "../../images/assets/img/2024/IMG-20231230-WA0013.jpg"
-import im4 from "../../images/assets/img/2024/IMG-20231230-WA0004.jpg"
-import im5 from "../../images/assets/img/2024/IMG-20231230-WA0014.jpg"
-import im6 from "../../images/assets/img/2024/IMG-20231230-WA0015.jpg"
+import im2 from "../../images/assets/img/2024/school/WhatsApp Image .jpeg"
+import im3 from "../../images/assets/img/2024/school/463887923_873207581647503_5922123558472212703_n.jpg"
+import im4 from "../../images/assets/img/2024/school/WhatsApp Image 2024-10-13 at 8.24.52 PM.jpeg"
+import im5 from "../../images/assets/img/2024/school/WhatsApp Image 2024-10-13 at 8.24.53 PM (1).jpeg"
+import im6 from "../../images/assets/img/2024/school/WhatsApp Image 2024-10-13 at 8.24.53 PM.jpeg"
 
 const slides = [im1, im2, im3, im4, im5, im6]
 
@@ -59,7 +59,7 @@ class Academy extends React.Component {
     this.handleBackgrounds = this.handleBackgrounds.bind(this)
   }
   componentDidMount() {
-    //this.handleBackgrounds()
+    this.handleBackgrounds()
     this.timer = setInterval(this.spinPics, 10000)
   }
   componentWillUnmount() {
