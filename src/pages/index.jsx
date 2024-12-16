@@ -117,11 +117,6 @@ const IndexPage = () => {
     }
   }
   React.useEffect(() => {
-    //recordMetrics()
-    //fetch events
-    fetchEvents(month + 1)
-
-    setTimeout(recordMetrics, 3000)
     setTimeout(newYearTheme, 3000)
   }, [])
 

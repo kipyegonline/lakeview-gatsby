@@ -60,9 +60,6 @@ export default function Events() {
     }
   }
 
-  React.useEffect(() => {
-    fetchEvents()
-  }, [])
   const Spinner = (
     <div className="text-center p-4 mx-auto my-4">
       <CircularProgress color="primary" size="3rem" />

@@ -68,9 +68,7 @@ export default function Sermons() {
   const showView = id => {
     setSermon(sermons.find(sermon => sermon.id === id))
   }
-  React.useEffect(() => {
-    fetchSermons()
-  }, [])
+
   const Spinner = (
     <div className="text-center p-4 mx-auto my-4">
       <CircularProgress color="primary" size="3rem" />
