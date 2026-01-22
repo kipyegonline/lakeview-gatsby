@@ -13,16 +13,15 @@ import {
   Avatar,
   CircularProgress,
   TextField,
-} from "@material-ui/core"
+} from "@mui/material"
 import DatePicker from "react-datepicker"
-import ArrowIcon from "@material-ui/icons/Link"
-import ErrorIcon from "@material-ui/icons/Error"
+import ArrowIcon from "@mui/icons-material/Link"
+import ErrorIcon from "@mui/icons-material/Error"
 import fasting from "../../../images/assets/img/2021/fastingwide.png"
 
 import theme from "../../../images/assets/img/2022/theme_of_the_year.jpg"
 import theme2024 from "../../../images/assets/img/2024/IMG-20231230-WA0008.jpg"
-import { makeStyles, StylesContext } from "@material-ui/styles"
-import { Pagination } from "@material-ui/lab"
+import { Pagination } from "@mui/lab"
 const Intro = ({ churcharea = [], fast = {}, getDate, selected }) => {
   const PrayerFasting = (
     <Box>
@@ -390,22 +389,19 @@ export const Fasting = ({
     </Card>
   )
 }
-const imgStyles = makeStyles({
-  img: {
-    "max-width": "600px",
-    width: "100%",
-    "@media (max-width:768px)": { maxWidth: 500, width: "100%" },
-    "@media (max-width:480px)": { maxWidth: 300, width: "100%" },
-  },
-})
+
+const imgStyle = {
+  maxWidth: "600px",
+  width: "100%",
+}
+
 export const ThemeOfTheYear = () => {
-  const styles = imgStyles()
   const year = new Date().getFullYear()
   return (
     <div className="p-4">
       <h6 className="py-2">Happy new Year {year} from Lakeview AGC</h6>
       <img
-        className={styles.img}
+        style={imgStyle}
         src={theme2024}
         alt={`Theme of the year ${year}`}
       />

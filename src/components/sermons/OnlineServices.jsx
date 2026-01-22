@@ -12,14 +12,14 @@ import {
   CardMedia,
   ListItemText,
   CircularProgress,
-} from "@material-ui/core"
-import Facebook from "@material-ui/icons/Facebook"
-import YouTube from "@material-ui/icons/YouTube"
-import IG from "@material-ui/icons/Instagram"
-import Twitter from "@material-ui/icons/Twitter"
+} from "@mui/material"
+import Facebook from "@mui/icons-material/Facebook"
+import YouTube from "@mui/icons-material/YouTube"
+import IG from "@mui/icons-material/Instagram"
+import Twitter from "@mui/icons-material/Twitter"
 import MainSermons from "./mainSermons"
 import onlineWorship from "../../images/assets/img/online_worship.jpg"
-import { Error } from "@material-ui/icons"
+import { Error } from "@mui/icons-material"
 let url =
   "https://www.youtube.com/watch?v=_ZP9z9SgIqg&origin=http://lakeviewagc.net"
 

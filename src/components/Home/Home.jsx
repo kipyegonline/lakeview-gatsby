@@ -2,7 +2,7 @@ import React from "react"
 import { ReactSlider } from "./carousel/Carousel"
 import Intro from "./intro/Intro"
 import { UpcomingEvents } from "../Home/events/Events"
-import { LinearProgress, Typography, Box } from "@material-ui/core"
+import { LinearProgress, Typography, Box } from "@mui/material"
 const Home = ({
   carosel = [],
   events = [],

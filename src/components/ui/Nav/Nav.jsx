@@ -1,12 +1,12 @@
 import React, { useState } from "react"
-import { Typography, IconButton, AppBar } from "@material-ui/core"
+import { Typography, IconButton, AppBar } from "@mui/material"
 import { Link as NavLink } from "gatsby"
 import $ from "jquery"
-import HomeIcon from "@material-ui/icons/Home"
-import SchoolIcon from "@material-ui/icons/School"
-import Close from "@material-ui/icons/Close"
+import HomeIcon from "@mui/icons-material/Home"
+import SchoolIcon from "@mui/icons-material/School"
+import Close from "@mui/icons-material/Close"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { SpeakerNotes } from "@material-ui/icons"
+import { SpeakerNotes } from "@mui/icons-material"
 
 const style = {
   color: "red",

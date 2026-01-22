@@ -1,6 +1,6 @@
 import React from "react"
 import Slider from "react-slick"
-import { Typography } from "@material-ui/core"
+import { Typography } from "@mui/material"
 
 export const ReactSlider = ({ carousels = [] }) => {
   const settings = {

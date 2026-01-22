@@ -19,10 +19,10 @@ import {
   Box,
   IconButton,
   Divider,
-} from "@material-ui/core"
+} from "@mui/material"
 
-import User from "@material-ui/icons/AccountCircle"
-import Pagination from "@material-ui/lab/Pagination"
+import User from "@mui/icons-material/AccountCircle"
+import { Pagination } from "@mui/lab"
 import give from "../../../images/assets/img/PAYBILL.jpg"
 import coop from "../../../images/assets/img/bankAccount.jpg"
 import delton from "../../../images/assets/img/pstdelton.jpg"

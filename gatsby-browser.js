@@ -13,3 +13,9 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js"
 import "./src/css/lakeview.css"
 import "./src/css/tailwind.css"
 import "./src/scss/lakeview.css"
+
+// Modern Design System Styles
+import "./src/styles/design-system.css"
+import "./src/styles/header.css"
+import "./src/styles/footer.css"
+import "./src/styles/layout.css"

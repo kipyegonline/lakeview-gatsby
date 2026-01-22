@@ -7,7 +7,7 @@ import {
   Box,
   Typography,
   Paper,
-} from "@material-ui/core"
+} from "@mui/material"
 import churcharea2 from "../../images/assets/img/2022/IMG-20220112-WA0004.jpg"
 import churcharea from "../../images/assets/img/2022/IMG-20220112-WA0003.jpg"
 const History = () => {

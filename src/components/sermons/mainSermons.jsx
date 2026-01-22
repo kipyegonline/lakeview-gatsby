@@ -11,7 +11,7 @@ import {
   Typography,
   ButtonGroup,
   Button,
-} from "@material-ui/core"
+} from "@mui/material"
 
 import moment from "moment"
 

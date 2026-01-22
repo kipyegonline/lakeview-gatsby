@@ -11,7 +11,7 @@ import {
   Typography,
   Divider,
   CardMedia,
-} from "@material-ui/core"
+} from "@mui/material"
 
 import Form from "./form/Form"
 import jp from "../../images/assets/img/newlcc/jp_psd.jpg"

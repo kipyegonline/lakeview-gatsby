@@ -1,100 +1,80 @@
-import React, { useState } from "react"
+import React from "react"
+import { Link } from "gatsby"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {
+  faFacebookF,
+  faTwitter,
+  faYoutube,
+  faInstagram,
+} from "@fortawesome/free-brands-svg-icons"
+import { faChurch } from "@fortawesome/free-solid-svg-icons"
 
-import headerlg from "../images/assets/img/2020/lakeview_lg.jpg.png"
-import headermd from "../images/assets/img/2020/march_header.png"
-import headersm from "../images/assets/img/2020/LAKEVIEW_SM.jpg.png"
-import { makeStyles } from "@material-ui/styles"
-
-const headerDims = () => {
-  let w
-
-  if (globalThis?.window !== undefined) {
-    w = document.documentElement.clientWidth
-  } else {
-    var globalThis
-  }
-  if (w < 480) {
-    return headersm
-  } else if (w < 768) {
-    return headermd
-  } else {
-    return headerlg
-  }
-}
-const navStyles = makeStyles({
-  socials: {
-    width: 50,
-    background: "#fff",
-    padding: ".35rem",
-    position: "absolute",
-    top: "30%",
-    left: "85%",
-    borderRadius: 5,
-    transitition: "all .25s ease-in",
-    "@media (max-width:480px)": {
-      display: "none",
-    },
-  },
-  list: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "flex-start",
-  },
-})
-
-const header = {
-  backgroundImage: `url(${headerDims()})`,
-  backgroundSize: "contain",
-  maxWidth: "1000px",
-  padding: ".5rem",
-  border: "1px solid rebecccapurpple",
-  backgroundPosition: "center center",
-  backgroundRepeat: "no-repeat",
-  height: 100,
-}
 const Header = () => {
   return (
-    <div id="header" className="my-1" style={header}>
-      {/*  <div className=" tagline-upper top-header text-center text-heading  text-shadow  d-none d-lg-block" >Lakeview AGC </div>
-   
-    <h3 className="tagline-upper text-center text-heading d-none d-lg-block   p-1 text-shadow  text-expanded  text-lg"> The Whole Church taking the Whole Gospel to the Whole World  </h3> 
-    */}
-    </div>
+    <header className="header-modern">
+      <div className="header-container">
+        {/* Logo Section */}
+        <Link to="/" className="header-logo-link">
+          <div className="header-logo">
+            <div className="header-logo-icon-wrapper">
+              <FontAwesomeIcon icon={faChurch} className="header-logo-icon" />
+            </div>
+            <div className="header-logo-text">
+              <span className="header-logo-name">Lakeview AGC</span>
+              <span className="header-logo-tagline">Africa Gospel Church</span>
+            </div>
+          </div>
+        </Link>
+
+        {/* Tagline - Hidden on mobile */}
+        <div className="header-tagline-wrapper">
+          <p className="header-tagline">
+            The Whole Church taking the Whole Gospel to the Whole World
+          </p>
+        </div>
+
+        {/* Social Icons */}
+        <div className="header-socials">
+          <a
+            href="https://www.facebook.com/Lakeview-AGC-Nakuru-355976284540480"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social-link"
+            aria-label="Facebook"
+          >
+            <FontAwesomeIcon icon={faFacebookF} />
+          </a>
+          <a
+            href="https://twitter.com/lakeviewagc"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social-link"
+            aria-label="Twitter"
+          >
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a
+            href="https://www.youtube.com/channel/UCVzXXOTTs7PLfh5wjB3KB9g"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social-link"
+            aria-label="YouTube"
+          >
+            <FontAwesomeIcon icon={faYoutube} />
+          </a>
+          <a
+            href="https://www.instagram.com/lakeviewagcnakuru/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="header-social-link"
+            aria-label="Instagram"
+          >
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </div>
+      </div>
+    </header>
   )
 }
+
 export default Header
-
-function SundayService() {
-  const [siku, setSiku] = useState(getTime())
-  function getTime() {
-    const today = new Date()
-    const day = today.getDay()
-
-    if (day === 0) {
-    } else {
-      switch (day) {
-        case 1: //mon
-          return 6 - day
-          break
-        case 2: //tue
-          return 6 - day
-          break
-        case 3: //wed
-          return 6 - day
-          break
-        case 4: //thur
-          return 6 - day
-          break
-        case 5: //fri
-          return 6 - day
-          break
-        case 6: //sat
-          return "tomorrow at 9:30"
-          break
-      }
-    }
-  }
-
-  return <small className="">next service starts in {siku} days</small>
-}
