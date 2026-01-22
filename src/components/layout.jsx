@@ -2,20 +2,19 @@ import React from "react"
 
 import { library } from "@fortawesome/fontawesome-svg-core"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { ListItemIcon, List, ListItem, IconButton } from "@material-ui/core"
-import { makeStyles } from "@material-ui/styles"
-import Facebook from "@material-ui/icons/Facebook"
+import { ListItemIcon, List, ListItem, IconButton } from "@mui/material"
+import Facebook from "@mui/icons-material/Facebook"
 import PropTypes from "prop-types"
-import YouTube from "@material-ui/icons/YouTube"
-import IG from "@material-ui/icons/Instagram"
-import Twitter from "@material-ui/icons/Twitter"
+import YouTube from "@mui/icons-material/YouTube"
+import IG from "@mui/icons-material/Instagram"
+import Twitter from "@mui/icons-material/Twitter"
 
 import Header from "./header"
 import Footer from "./ui/footer/Footer"
 import Nav from "./ui/Nav/Nav"
 import { icons } from "./icons"
 import Give from "./give/Give"
-import { ArrowUpwardRounded } from "@material-ui/icons"
+import { ArrowUpwardRounded } from "@mui/icons-material"
 ///import "./layout.css"
 
 const Layout = ({ children }) => {
@@ -68,45 +67,44 @@ const Layout = ({ children }) => {
         color="purple"
         onClick={handleNavigation}
       />
-      {socials ? <Socials useStyles={useStyles} /> : null}
+      {socials ? <Socials /> : null}
     </div>
   )
 }
 
 export default Layout
-const useStyles = makeStyles({
-  socials: {
-    width: 50,
-    background: "#fff",
-    padding: ".15rem",
-    position: "fixed",
-    zIndex: 100,
-    top: "20%",
-    right: 10,
-    borderRadius: 5,
-    transform: "skew(10,10)",
-    margin: "0.25rem auto",
-    textAlign: "center",
-    transitition: "all .25s ease-in",
-    "@media (max-width:480px)": {
-      right: -5,
-    },
+
+const socialsStyle = {
+  width: 50,
+  background: "#fff",
+  padding: ".15rem",
+  position: "fixed",
+  zIndex: 100,
+  top: "20%",
+  right: 10,
+  borderRadius: 5,
+  transform: "skew(10,10)",
+  margin: "0.25rem auto",
+  textAlign: "center",
+  transition: "all .25s ease-in",
+  "@media (max-width:480px)": {
+    right: -5,
   },
-  list: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-evenly",
-    alignItems: "flex-start",
-    textAlign: "center",
-  },
-})
+}
+
+const listStyle = {
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  alignItems: "flex-start",
+  textAlign: "center",
+}
 let url = "https://www.youtube.com/channel/UCVzXXOTTs7PLfh5wjB3KB9g"
 
-const Socials = ({ useStyles }) => {
-  const classes = useStyles()
+const Socials = () => {
   return (
-    <div className={classes.socials}>
-      <List className={classes.list}>
+    <div style={socialsStyle}>
+      <List sx={listStyle}>
         <ListItem
           button
           dense

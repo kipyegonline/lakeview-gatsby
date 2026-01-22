@@ -9,7 +9,7 @@ import {
   List,
   ListItem,
   ListItemText,
-} from "@material-ui/core"
+} from "@mui/material"
 
 import { AboutNav } from "./About"
 import church from "../../images/assets/img/2024/IMG-20231230-WA0006.jpg"

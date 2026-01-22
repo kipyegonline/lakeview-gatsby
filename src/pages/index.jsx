@@ -12,7 +12,7 @@ import {
   Typography,
   Button,
   DialogTitle,
-} from "@material-ui/core"
+} from "@mui/material"
 /* eslint-disable no-restricted-globals */
 
 const IndexPage = () => {
