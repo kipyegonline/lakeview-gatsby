@@ -13,6 +13,7 @@ import {
   Button,
   DialogTitle,
 } from "@mui/material"
+import images2026 from "../data/images2026"
 /* eslint-disable no-restricted-globals */
 
 const IndexPage = () => {
@@ -21,7 +22,7 @@ const IndexPage = () => {
   const [fasts, setFasts] = React.useState([])
   const [events, setEvents] = React.useState([])
   const [welcome, setWelcome] = React.useState(
-    `Theme of the year ${new Date().getFullYear()}`
+    `Theme of the year ${new Date().getFullYear()}`,
   )
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
@@ -48,7 +49,7 @@ const IndexPage = () => {
     }
 
     fetch(
-      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`
+      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`,
     )
   }
   // the thing with fasting
@@ -138,6 +139,7 @@ const IndexPage = () => {
         fetchEvent={fetchEvents}
         loader={loader}
         getDate={handleUserDate}
+        images={[...images2026, ...carosel]}
       />
     </Layout>
   )
@@ -225,6 +227,6 @@ for (let i = 0; i < skills.length; i++) {
 console.log(
   "%cWelcome to %cLakeview AGC ",
   "font-family:cursive;font-size:4rem;color:purple; word-spacing:10px",
-  "font-weight:bold; font-family:cursive;font-size:4rem;color:purple; letter-spacing:10px"
+  "font-weight:bold; font-family:cursive;font-size:4rem;color:purple; letter-spacing:10px",
 )
 const calendar = ["January", "February", "March"]

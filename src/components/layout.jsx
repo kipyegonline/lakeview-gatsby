@@ -12,7 +12,7 @@ import { icons } from "./icons"
 const Layout = ({ children }) => {
   const handleNavigation = () => window.scrollTo({ behavior: "smooth", top: 0 })
   const [showScrollTop, setShowScrollTop] = React.useState(false)
-  
+
   const handleScroll = () => {
     const scrollY = window.scrollY
     setShowScrollTop(scrollY > 400)
@@ -20,17 +20,15 @@ const Layout = ({ children }) => {
 
   React.useEffect(() => {
     library.add(...icons)
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   return (
     <div className="layout-wrapper">
       <Header />
-      <Nav />
-      <main className="main-content">
-        {children}
-      </main>
+
+      <main className="main-content">{children}</main>
       <Footer />
 
       {/* Scroll to Top Button */}

@@ -6,7 +6,12 @@
   background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
   color: #ffffff;
   margin-top: 4rem;
-  width: 100%;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .footer-container {
@@ -130,7 +135,7 @@
 }
 
 .footer-nav-link::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -2px;
   left: 0;

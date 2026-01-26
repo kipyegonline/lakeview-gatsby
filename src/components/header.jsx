@@ -8,7 +8,8 @@ import {
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons"
 import { faChurch } from "@fortawesome/free-solid-svg-icons"
-
+import Navigation from "./ui/Nav/Navigation"
+import logo from "../images/assets/img/2026/agc_logo.png"
 const Header = () => {
   return (
     <header className="header-modern">
@@ -16,8 +17,8 @@ const Header = () => {
         {/* Logo Section */}
         <Link to="/" className="header-logo-link">
           <div className="header-logo">
-            <div className="header-logo-icon-wrapper">
-              <FontAwesomeIcon icon={faChurch} className="header-logo-icon" />
+            <div className="header-logo-icon-wrapper h-[70px]">
+              <img src={logo} alt="Logo" className="header-logo-icon" />
             </div>
             <div className="header-logo-text">
               <span className="header-logo-name">Lakeview AGC</span>
@@ -26,15 +27,11 @@ const Header = () => {
           </div>
         </Link>
 
-        {/* Tagline - Hidden on mobile */}
-        <div className="header-tagline-wrapper">
-          <p className="header-tagline">
-            The Whole Church taking the Whole Gospel to the Whole World
-          </p>
-        </div>
+        {/* Navigation Menu */}
+        <Navigation />
 
-        {/* Social Icons */}
-        <div className="header-socials">
+        {/* Social Icons - Hidden on mobile */}
+        <div className="header-socials ">
           <a
             href="https://www.facebook.com/Lakeview-AGC-Nakuru-355976284540480"
             target="_blank"

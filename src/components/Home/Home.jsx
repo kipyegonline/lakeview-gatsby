@@ -2,11 +2,14 @@ import React from "react"
 import { ReactSlider } from "./carousel/Carousel"
 import Intro from "./intro/Intro"
 import { UpcomingEvents } from "../Home/events/Events"
-import { LinearProgress, Typography, Box } from "@mui/material"
+import { LinearProgress } from "@mui/material"
+import { calendarEvents } from "./events/events2026"
 const Home = ({
   carosel = [],
-  events = [],
+  images = [],
+
   churcharea,
+  events = [],
   fast = {},
   getDate = f => f,
   fetchEvent = f => f,
@@ -17,7 +20,7 @@ const Home = ({
     {/*<Carousel carosel={carosel} />*/}
     <div style={{ maxHeight: 403, overflow: "hidden" }}>
       {" "}
-      <ReactSlider carousels={carosel} />
+      <ReactSlider images={images} />
     </div>
 
     <Intro
@@ -28,22 +31,7 @@ const Home = ({
     />
     <div className="my-2 py-2">{loader && <LinearProgress />}</div>
 
-    {!!events.length && (
-      <UpcomingEvents events={events} fetchEvent={fetchEvent} />
-    )}
-    {/*!!!events.length && (
-      <Box className="my-2 py-2">
-        <Typography classNama="py-4 ">
-          No Events found for selected month.{" "}
-          <span
-            style={{ color: "blue", marginLeft: 5 }}
-            onClick={() => fetchEvent(new Date().getMonth() + 1)}
-          >
-            Reload
-          </span>
-        </Typography>
-      </Box>
-    )*/}
+    {!!calendarEvents.length && <UpcomingEvents events={calendarEvents} />}
   </div>
 )
 export default Home
