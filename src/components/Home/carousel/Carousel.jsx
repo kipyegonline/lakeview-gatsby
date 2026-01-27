@@ -93,7 +93,7 @@ export const ReactSlider = ({
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
   }, [isHovering, goToNext, goToPrev])
-  console.log(images, "mages")
+
   if (!images.length) return "no images to show"
 
   const slideWidth = 100 / visibleSlides

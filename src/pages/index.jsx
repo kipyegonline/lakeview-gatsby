@@ -3,13 +3,12 @@ import { v4 } from "uuid"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Home from "../components/Home/Home"
-import { Fasting, ThemeOfTheYear } from "../components/Home/intro/Intro"
+import { Fasting } from "../components/Home/intro/Intro"
 import { carosel, smallSlides } from "../components/Main"
 import {
   Dialog,
   DialogActions,
   DialogContent,
-  Typography,
   Button,
   DialogTitle,
 } from "@mui/material"
@@ -127,9 +126,6 @@ const IndexPage = () => {
         title={`Home | Lakeview AGC-Nakuru-section 58 | ${new Date().getFullYear()}| Lakeview Academy school | Churches in Nakuru`}
       />
 
-      <UseModal open={open} setOpen={closeModal} welcome={welcome}>
-        <ThemeOfTheYear />
-      </UseModal>
       <Home
         carosel={carosel}
         churcharea={smallSlides}
@@ -225,8 +221,8 @@ for (let i = 0; i < skills.length; i++) {
 }
 */
 console.log(
-  "%cWelcome to %cLakeview AGC ",
-  "font-family:cursive;font-size:4rem;color:purple; word-spacing:10px",
-  "font-weight:bold; font-family:cursive;font-size:4rem;color:purple; letter-spacing:10px",
+  "%cWelcome to %cLakeview Africa Gospel Church. We are delighted to have you — a house of prayer for all people.\n We are bound by our vision of sharing the light of the gospel in Nakuru and beyond.",
+  "font-family:cursive;font-size:2rem;color:purple; word-spacing:10px",
+  "font-weight:bold; font-family:cursive;font-size:2rem;color:purple; letter-spacing:10px",
 )
 const calendar = ["January", "February", "March"]
