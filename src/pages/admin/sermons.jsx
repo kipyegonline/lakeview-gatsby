@@ -17,9 +17,9 @@ import {
   DialogContent,
   DialogActions,
   DialogTitle,
-} from "@material-ui/core"
+} from "@mui/material"
 import AdminLayout, { PaginationMaker } from "./adminLayout"
-import ErrorIcon from "@material-ui/icons/Error"
+import ErrorIcon from "@mui/icons-material/Error"
 import { Sermon } from "../../components/sermons/mainSermons"
 const pep = [...Array(20)].map((item, i) => ({
   id: i + 1,

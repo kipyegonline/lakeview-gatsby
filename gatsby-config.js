@@ -1,12 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Lakeview Africa Gospel Church website `,
+    title: `Lakeview Africa Gospel Church website`,
     description: `Lakeview AGC-Section 58, website`,
     author: `@kipyegonline`,
+    siteUrl: `https://lakeviewagc.net`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
-
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -16,18 +15,20 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-postcss`,
 
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Lakeview AGC`,
+        short_name: `Lakeview`,
         start_url: `/`,
         background_color: `#ccc`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/favecon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favecon.png`,
       },
     },
 
@@ -35,13 +36,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: ["G-YHJS1YC35L"],
-        // Optional:
-        // outboundLink: true,
-        // debug: true,
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

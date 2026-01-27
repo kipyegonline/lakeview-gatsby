@@ -1,7 +1,7 @@
 import React from "react"
 import axios from "axios"
 import { Link, navigate } from "gatsby"
-import ArrowIcon from "@material-ui/icons/ArrowRight"
+import ArrowIcon from "@mui/icons-material/ArrowRight"
 import {
   Grid,
   List,
@@ -11,10 +11,10 @@ import {
   ListItemIcon,
   CircularProgress,
   Box,
-} from "@material-ui/core"
+} from "@mui/material"
 import Layout from "../../components/layout"
 import Admin from "./index"
-import { Pagination, PaginationItem } from "@material-ui/lab"
+import { Pagination, PaginationItem } from "@mui/lab"
 
 export default function AdminLayout({ children }) {
   const [isLoggedIn, setLoggedIn] = React.useState(undefined)

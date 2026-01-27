@@ -3,16 +3,16 @@ import { v4 } from "uuid"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Home from "../components/Home/Home"
-import { Fasting, ThemeOfTheYear } from "../components/Home/intro/Intro"
+import { Fasting } from "../components/Home/intro/Intro"
 import { carosel, smallSlides } from "../components/Main"
 import {
   Dialog,
   DialogActions,
   DialogContent,
-  Typography,
   Button,
   DialogTitle,
-} from "@material-ui/core"
+} from "@mui/material"
+import images2026 from "../data/images2026"
 /* eslint-disable no-restricted-globals */
 
 const IndexPage = () => {
@@ -21,7 +21,7 @@ const IndexPage = () => {
   const [fasts, setFasts] = React.useState([])
   const [events, setEvents] = React.useState([])
   const [welcome, setWelcome] = React.useState(
-    `Theme of the year ${new Date().getFullYear()}`
+    `Theme of the year ${new Date().getFullYear()}`,
   )
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
@@ -48,7 +48,7 @@ const IndexPage = () => {
     }
 
     fetch(
-      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`
+      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`,
     )
   }
   // the thing with fasting
@@ -126,9 +126,6 @@ const IndexPage = () => {
         title={`Home | Lakeview AGC-Nakuru-section 58 | ${new Date().getFullYear()}| Lakeview Academy school | Churches in Nakuru`}
       />
 
-      <UseModal open={open} setOpen={closeModal} welcome={welcome}>
-        <ThemeOfTheYear />
-      </UseModal>
       <Home
         carosel={carosel}
         churcharea={smallSlides}
@@ -138,6 +135,7 @@ const IndexPage = () => {
         fetchEvent={fetchEvents}
         loader={loader}
         getDate={handleUserDate}
+        images={[...images2026, ...carosel]}
       />
     </Layout>
   )
@@ -223,8 +221,8 @@ for (let i = 0; i < skills.length; i++) {
 }
 */
 console.log(
-  "%cWelcome to %cLakeview AGC ",
-  "font-family:cursive;font-size:4rem;color:purple; word-spacing:10px",
-  "font-weight:bold; font-family:cursive;font-size:4rem;color:purple; letter-spacing:10px"
+  "%cWelcome to %cLakeview Africa Gospel Church. We are delighted to have you — a house of prayer for all people.\n We are bound by our vision of sharing the light of the gospel in Nakuru and beyond.",
+  "font-family:cursive;font-size:2rem;color:purple; word-spacing:10px",
+  "font-weight:bold; font-family:cursive;font-size:2rem;color:purple; letter-spacing:10px",
 )
 const calendar = ["January", "February", "March"]

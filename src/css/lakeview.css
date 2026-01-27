@@ -8,14 +8,28 @@ html {
 
 body {
   font-family: roboto, Helvetica, Arial, sans-serif;
-  width: 90%;
+  width: 100%;
+  max-width: 1400px;
   margin: 0 auto !important;
-  padding: 1rem;
+  padding: 1rem 1.5rem;
   scroll-behavior: auto;
   background-color: rgba(255, 255, 255, 0.89);
 
   font-size: 1rem;
 }
+
+@media (min-width: 768px) {
+  body {
+    padding: 1rem 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    padding: 1rem 4rem;
+  }
+}
+
 .jum {
   background: #ddd;
 }
@@ -179,7 +193,9 @@ hr.divider {
   height: 100px;
   color: red;
   font-size: 2rem;
-  transition: transform, 2s ease;
+  transition:
+    transform,
+    2s ease;
   animation: aster 3s ease reverse 5s infinite;
 }
 .completed {
@@ -194,7 +210,9 @@ hr.divider {
   animation: theme 5s both 3s alternate 3;
 }
 .script:hover {
-  box-shadow: 2px 2px 2px #fff, -2px -2px 2px rgb(255, 255, 255);
+  box-shadow:
+    2px 2px 2px #fff,
+    -2px -2px 2px rgb(255, 255, 255);
 }
 
 /*About section*/

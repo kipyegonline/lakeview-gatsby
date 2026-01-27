@@ -9,8 +9,8 @@ import {
   TableBody,
   TableCell,
   CircularProgress,
-} from "@material-ui/core"
-import TodayIcon from "@material-ui/icons/Today"
+} from "@mui/material"
+import TodayIcon from "@mui/icons-material/Today"
 import Layout from "../components/layout"
 import fastwrapper from "../images/assets/img/2021/fastingwide.png"
 const bg = {

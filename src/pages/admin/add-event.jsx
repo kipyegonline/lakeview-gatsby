@@ -10,8 +10,8 @@ import {
   Box,
   FormHelperText,
   CircularProgress,
-} from "@material-ui/core"
-import AddIcon from "@material-ui/icons/Add"
+} from "@mui/material"
+import AddIcon from "@mui/icons-material/Add"
 import AdminLayout, { useInput, UseTextField } from "./adminLayout"
 
 export default function AddEvent() {

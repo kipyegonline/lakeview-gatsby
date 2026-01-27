@@ -10,7 +10,7 @@ import {
   Grid,
   Box,
   TableBody,
-} from "@material-ui/core"
+} from "@mui/material"
 
 export default class Fellowship extends React.Component {
   constructor(props) {

@@ -2,7 +2,7 @@ import React from "react"
 import axios from "axios"
 import { v4 } from "uuid"
 //import { navigate } from "gatsby"
-import ErrorIcon from "@material-ui/icons/Error"
+import ErrorIcon from "@mui/icons-material/Error"
 import {
   Box,
   FormControl,
@@ -13,7 +13,7 @@ import {
   Button,
   FormHelperText,
   LinearProgress,
-} from "@material-ui/core"
+} from "@mui/material"
 import Layout from "../../components/layout"
 
 const style = { display: "block", width: "100%" }

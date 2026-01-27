@@ -5,8 +5,8 @@ import {
   FormControl,
   Card,
   Typography,
-} from "@material-ui/core"
-import Alert from "@material-ui/lab/Alert"
+} from "@mui/material"
+import { Alert } from "@mui/material"
 import React from "react"
 import $ from "jquery"
 import Layout from "../../components/layout"
