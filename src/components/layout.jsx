@@ -6,7 +6,6 @@ import PropTypes from "prop-types"
 
 import Header from "./header"
 import Footer from "./ui/footer/Footer"
-import Nav from "./ui/Nav/Nav"
 import { icons } from "./icons"
 
 const Layout = ({ children }) => {
@@ -27,7 +26,6 @@ const Layout = ({ children }) => {
   return (
     <div className="layout-wrapper">
       <Header />
-
       <main className="main-content">{children}</main>
       <Footer />
 

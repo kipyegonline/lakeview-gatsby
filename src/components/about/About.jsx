@@ -86,24 +86,35 @@ const About = () => {
 
   return (
     <section className="relative min-h-screen bg-gray-50">
-      {/* Desktop Navigation - Top */}
-      <AboutNav
-        currentTab={currentTab}
-        onTabChange={handleTabChange}
-        variant="desktop"
-      />
+      {/* Desktop Layout - Sidebar + Content */}
+      <div className="hidden md:flex">
+        {/* Desktop Sidebar Navigation */}
+        <AboutNav
+          currentTab={currentTab}
+          onTabChange={handleTabChange}
+          variant="desktop"
+        />
 
-      {/* Main Content */}
-      <main className="pb-20 md:pb-8">
-        <CurrentComponent />
-      </main>
+        {/* Main Content - Desktop */}
+        <main className="flex-1 min-h-screen">
+          <CurrentComponent />
+        </main>
+      </div>
 
-      {/* Mobile Navigation - Fixed Bottom */}
-      <AboutNav
-        currentTab={currentTab}
-        onTabChange={handleTabChange}
-        variant="mobile"
-      />
+      {/* Mobile Layout */}
+      <div className="md:hidden">
+        {/* Main Content - Mobile */}
+        <main className="pb-24">
+          <CurrentComponent />
+        </main>
+
+        {/* Mobile Navigation - Fixed Bottom */}
+        <AboutNav
+          currentTab={currentTab}
+          onTabChange={handleTabChange}
+          variant="mobile"
+        />
+      </div>
     </section>
   )
 }
@@ -118,7 +129,7 @@ export const AboutNav = ({ currentTab, onTabChange, variant }) => {
       className={`
         ${
           isDesktop
-            ? "hidden md:block sticky top-0 z-40"
+            ? "sticky top-0 h-screen w-64 shrink-0 z-40"
             : "md:hidden fixed bottom-0 left-0 right-0 z-50"
         }
       `}
@@ -128,17 +139,25 @@ export const AboutNav = ({ currentTab, onTabChange, variant }) => {
       {/* Background with gradient */}
       <div
         className={`
+          h-full
           ${
             isDesktop
-              ? "bg-gradient-to-r from-purple-700 via-purple-600 to-indigo-600 shadow-lg"
+              ? "bg-gradient-to-b from-purple-700 via-purple-600 to-indigo-600 shadow-xl"
               : "bg-gradient-to-t from-purple-800 via-purple-700 to-purple-600 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
           }
         `}
       >
-        {/* Desktop Layout */}
+        {/* Desktop Layout - Vertical Sidebar */}
         {isDesktop && (
-          <div className="max-w-4xl mx-auto px-4">
-            <ul className="flex items-center justify-center gap-2 py-2">
+          <div className="flex flex-col h-full p-4">
+            {/* Header */}
+            <div className="mb-8 pt-4 text-center">
+              <h2 className="text-white font-bold text-xl mb-1">About Us</h2>
+              <div className="w-12 h-1 bg-white/40 rounded-full mx-auto"></div>
+            </div>
+
+            {/* Nav Items */}
+            <ul className="flex flex-col gap-2 flex-1">
               {navItems.map((item, index) => (
                 <NavItem
                   key={item.id}
@@ -150,10 +169,24 @@ export const AboutNav = ({ currentTab, onTabChange, variant }) => {
                 />
               ))}
             </ul>
+
+            {/* Decorative bottom */}
+            <div className="mt-auto pt-6 pb-4 text-center">
+              <div className="flex items-center justify-center gap-2 text-white/50 text-sm">
+                <svg
+                  className="w-4 h-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                </svg>
+                <span>Lakeview AGC</span>
+              </div>
+            </div>
           </div>
         )}
 
-        {/* Mobile Layout */}
+        {/* Mobile Layout - Horizontal Bottom Bar */}
         {!isDesktop && (
           <div className="safe-area-bottom">
             <ul className="flex items-center justify-around py-2 px-2">
@@ -191,23 +224,23 @@ const NavItem = ({ item, isActive, onClick, variant, index = 0 }) => {
   return (
     <li
       className={`
-        list-none transition-all duration-500 ease-out
-        ${isMounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}
+        list-none transition-all duration-500 ease-out w-full
+        ${isMounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}
       `}
       style={{ transitionDelay: `${index * 50}ms` }}
     >
       <button
         onClick={onClick}
         className={`
-          group relative flex items-center gap-2 transition-all duration-300 ease-out
+          group relative flex items-center gap-3 transition-all duration-300 ease-out w-full
           focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-purple-600
           ${
             isDesktop
-              ? `px-6 py-3 rounded-xl font-medium text-sm
+              ? `px-4 py-4 rounded-xl font-medium text-sm text-left
                ${
                  isActive
-                   ? "bg-white text-purple-700 shadow-lg scale-105"
-                   : "text-white/90 hover:bg-white/15 hover:text-white"
+                   ? "bg-white text-purple-700 shadow-lg shadow-purple-900/30"
+                   : "text-white/90 hover:bg-white/15 hover:text-white hover:translate-x-1"
                }`
               : `flex-col items-center justify-center px-4 py-2 rounded-xl min-w-[80px]
                ${
@@ -219,10 +252,15 @@ const NavItem = ({ item, isActive, onClick, variant, index = 0 }) => {
         `}
         aria-current={isActive ? "page" : undefined}
       >
+        {/* Active indicator - Desktop (left bar) */}
+        {isDesktop && isActive && (
+          <span className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-purple-700 rounded-r-full" />
+        )}
+
         {/* Icon */}
         <span
           className={`
-            transition-transform duration-300
+            transition-transform duration-300 shrink-0
             ${isActive ? "scale-110" : "group-hover:scale-110"}
             ${!isDesktop && isActive ? "text-white" : ""}
           `}
@@ -234,16 +272,28 @@ const NavItem = ({ item, isActive, onClick, variant, index = 0 }) => {
         <span
           className={`
             transition-all duration-300
-            ${isDesktop ? "" : "text-xs mt-1"}
+            ${isDesktop ? "flex-1" : "text-xs mt-1"}
             ${isActive && isDesktop ? "font-semibold" : ""}
           `}
         >
           {item.label}
         </span>
 
-        {/* Active indicator - Desktop */}
-        {isDesktop && isActive && (
-          <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
+        {/* Arrow indicator - Desktop */}
+        {isDesktop && (
+          <svg
+            className={`w-4 h-4 transition-all duration-300 shrink-0 ${isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-2 group-hover:opacity-50 group-hover:translate-x-0"}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
         )}
 
         {/* Active indicator - Mobile */}

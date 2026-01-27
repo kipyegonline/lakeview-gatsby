@@ -1,97 +1,265 @@
-### Lakeview Africa Gospel Church website
+# 🏛️ Lakeview Africa Gospel Church
 
-The website was refactored from vanilla react to gatsby js, a server side rendering framework for react, in order to take advantages of gatsby magic; server side rendering, SEO ,bundle sizing and image handling.
+<div align="center">
 
-The static website serves it static files in app, no API calls
+![Gatsby](https://img.shields.io/badge/Gatsby-5.13-663399?style=for-the-badge&logo=gatsby&logoColor=white)
+![React](https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![License](https://img.shields.io/badge/License-0BSD-green?style=for-the-badge)
 
-### Accesss
+**A modern, responsive church website built with Gatsby.js**
 
-The site is available on [Lakeview AGC website](http://www.lakeviewagc.net) and [Netlify](https://www.lakeview.netlify.com)
+[🌐 Live Site](https://lakeviewagc.net) • [📦 Netlify](https://lakeview.netlify.com) • [💻 Source Code](https://github.com/kipyegonline/lakeview-gatsby)
 
-The source code is available on [Github](https://www.github.com/kipyegonline/lakeview-gatsby)
+</div>
 
-### Author
+---
 
-Vince Kipyegon [Vince](https://www.github.com/kipyegonline)
+## 📖 About
 
-[@kipyegonline](https://www.twitter.com/kipyegonline)
+Lakeview AGC (Africa Gospel Church) is located in Section 58, Nakuru, Kenya. This website serves as the digital presence for the church community, providing information about services, events, ministries, and the Lakeview Academy school.
 
-## 🚀 Quick start
+The site was refactored from vanilla React to **Gatsby.js** to leverage:
 
-This section provides guidelines on how to use initialize Gatsby js projects, courtesy of Gatsby js....
+- ⚡ **Server-Side Rendering (SSR)** for faster initial loads
+- 🔍 **SEO optimization** out of the box
+- 📦 **Automatic code splitting** and bundle optimization
+- 🖼️ **Intelligent image handling** with gatsby-image
 
-1.  **Create a Gatsby site.**
+---
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+## 🏗️ Architecture
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    run npm gatsby-cli -g
-    ```
+```
+lakeview-gatsby/
+├── 📁 src/
+│   ├── 📁 components/          # Reusable UI components
+│   │   ├── 📁 about/           # About page sections
+│   │   ├── 📁 academy/         # School/Academy components
+│   │   ├── 📁 contact/         # Contact forms
+│   │   ├── 📁 departments/     # Church ministries
+│   │   ├── 📁 fellowship/      # Fellowship components
+│   │   ├── 📁 give/            # Giving/Donations
+│   │   ├── 📁 Home/            # Homepage sections
+│   │   │   ├── 📁 carousel/    # Hero carousel
+│   │   │   ├── 📁 events/      # Events display
+│   │   │   └── 📁 intro/       # Introduction section
+│   │   ├── 📁 MultiCarousel/   # Multi-item carousel
+│   │   ├── 📁 sermons/         # Online services & sermons
+│   │   ├── 📁 ui/              # UI primitives
+│   │   │   ├── 📁 footer/      # Site footer
+│   │   │   ├── 📁 Modal/       # Modal dialogs
+│   │   │   ├── 📁 Nav/         # Navigation
+│   │   │   └── 📁 NotFound/    # 404 page
+│   │   ├── header.jsx          # Site header
+│   │   ├── layout.jsx          # Main layout wrapper
+│   │   └── seo.jsx             # SEO component
+│   │
+│   ├── 📁 pages/               # Route pages (auto-generated routes)
+│   │   ├── index.jsx           # Homepage
+│   │   ├── about-lakeview-agc.jsx
+│   │   ├── church-ministries.jsx
+│   │   ├── events.jsx
+│   │   ├── get-in-touch.jsx
+│   │   ├── home-fellowship-and-bible-study.jsx
+│   │   ├── lakeview-academy.jsx
+│   │   ├── prayer-and-fasting.jsx
+│   │   ├── services.jsx
+│   │   ├── 404.jsx
+│   │   └── 📁 admin/           # Admin dashboard
+│   │
+│   ├── 📁 styles/              # Global styles
+│   │   ├── design-system.css   # CSS custom properties & tokens
+│   │   ├── layout.css
+│   │   ├── header.css
+│   │   └── footer.css
+│   │
+│   ├── 📁 css/                 # Additional stylesheets
+│   ├── 📁 scss/                # SASS stylesheets
+│   ├── 📁 images/              # Static images
+│   └── 📁 data/                # Static data files
+│
+├── 📁 public/                  # Built static files
+├── gatsby-config.js            # Gatsby configuration
+├── gatsby-node.js              # Node APIs
+├── gatsby-browser.js           # Browser APIs
+├── gatsby-ssr.js               # SSR APIs
+├── tailwind.config.js          # Tailwind CSS config
+└── postcss.config.js           # PostCSS config
+```
 
-1.  **Start developing.**
+---
 
-    Navigate into your new site’s directory and start it up.
+## 🎨 Design System
 
-    ```shell
-    1. run npm install
-    ```
+The site uses a custom design system with CSS custom properties defined in `src/styles/design-system.css`:
 
+### Brand Colors
 
-    2. gatsby develop
-    ```
+| Color          | Value     | Usage                             |
+| -------------- | --------- | --------------------------------- |
+| Primary        | `#7c3aed` | Vibrant Purple - main brand color |
+| Primary Dark   | `#5b21b6` | Deep Purple - hover states        |
+| Secondary      | `#ec4899` | Rose Pink - accents               |
+| Secondary Dark | `#be185d` | Deep Rose - hover states          |
 
-1.  **Open the source code and start editing!**
+### Features
 
-## 🧐 What's inside?
+- 📐 **Spacing scale** (4px base unit)
+- 🔤 **Typography tokens** (Inter font family)
+- 🌈 **Gradient presets** for backgrounds
+- 🎭 **Animation keyframes** (fadeIn, slideIn, float, pulse)
+- 📱 **Responsive breakpoints**
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+---
 
-2.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+## 📄 Pages
 
-3.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+| Route                              | Description                                |
+| ---------------------------------- | ------------------------------------------ |
+| `/`                                | Homepage with hero, events, and intro      |
+| `/about-lakeview-agc`              | Church history, staff, and vision          |
+| `/services`                        | Worship service times and online streaming |
+| `/church-ministries`               | Ministry departments                       |
+| `/lakeview-academy`                | School information, fees, and enrollment   |
+| `/events`                          | Upcoming church events                     |
+| `/get-in-touch`                    | Contact form and location                  |
+| `/home-fellowship-and-bible-study` | Fellowship groups                          |
+| `/prayer-and-fasting`              | Prayer programs                            |
+| `/admin/*`                         | Admin dashboard for content management     |
 
-4.  **`.prettierrc`**: This is a configuration file for [Prettier](https://prettier.io/). Prettier is a tool to help keep the formatting of your code consistent.
+---
 
-5.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.org/docs/browser-apis/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+## 🛠️ Tech Stack
 
-6.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.org/docs/gatsby-config/) for more detail).
+| Technology               | Purpose                        |
+| ------------------------ | ------------------------------ |
+| **Gatsby 5**             | Static site generator with SSR |
+| **React 18**             | UI component library           |
+| **Tailwind CSS 3**       | Utility-first CSS framework    |
+| **MUI 5**                | Material Design components     |
+| **Bootstrap 5**          | Additional UI components       |
+| **SASS**                 | CSS preprocessing              |
+| **FontAwesome**          | Icon library                   |
+| **react-multi-carousel** | Carousels and sliders          |
+| **Axios**                | HTTP client                    |
+| **Moment.js**            | Date formatting                |
 
-7.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.org/docs/node-apis/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+---
 
-8.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.org/docs/ssr-apis/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## 🚀 Getting Started
 
-9.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+### Prerequisites
 
-10. **`package-lock.json`** (See `package.json` below, first). This is an automatically generated file based on the exact versions of your npm dependencies that were installed for your project. **(You won’t change this file directly).**
+- Node.js >= 18.0.0
+- npm or yarn
 
-11. **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+### Installation
 
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.org/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
+```bash
+# Clone the repository
+git clone https://github.com/kipyegonline/lakeview-gatsby.git
 
-## Hitches
+# Navigate to project directory
+cd lakeview-gatsby
 
-The following pages hae an issue in development and production
-Header.jsx,contactus.jsx,about.jsx (2),academy.jsx and Layout.jsx
+# Install dependencies
+npm install
 
-The problem is development environmemt doesn't support `globalThis` while prod supports it...so it shuld be removed on development then added when ready to build..headache!... :)
+# Start development server
+npm run develop
+# or
+gatsby develop
+```
 
-## Buildin
+The site will be available at `http://localhost:8000`
 
-Run gatsby build and project will automatically be built on a public folder if theres no err....
+### Build for Production
 
-## 💫 Deployment
+```bash
+# Create production build
+gatsby build
 
-The project is available on Netlify....
+# Serve production build locally
+gatsby serve
+```
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://lakeview.netlify.com)
+### Environment Setup
 
-And Lakeview AGC website.....
-[Lakeview](http://lakeviewagc.net)
+If you encounter OpenSSL issues with Node.js 17+:
 
-<!-- AUTO-GENERATED-CONTENT:END -->
-
-header,layout,index admin location
-contact global
-
+```bash
 export NODE_OPTIONS=--openssl-legacy-provider
+```
+
+---
+
+## 📦 Deployment
+
+The site is deployed on **Netlify** with automatic deployments from the main branch.
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/kipyegonline/lakeview-gatsby)
+
+### Live URLs
+
+- 🌐 **Production**: [lakeviewagc.net](https://lakeviewagc.net)
+- 🔗 **Netlify**: [lakeview.netlify.com](https://lakeview.netlify.com)
+
+---
+
+## 📁 Key Components
+
+### `OnlineServices.jsx`
+
+Modern streaming section with YouTube and Facebook platform cards featuring glassmorphism design and hover animations.
+
+### `Academy.jsx`
+
+Comprehensive school section with:
+
+- Hero carousel with gallery strip
+- Vision & Mission cards
+- Interactive class listings
+- Tabbed fee structure
+- Parent testimonials
+- Contact information
+
+### `Home.jsx`
+
+Homepage with hero carousel, upcoming events, and church introduction.
+
+### Design System (`design-system.css`)
+
+CSS custom properties for consistent theming:
+
+- Color tokens
+- Typography scale
+- Spacing system
+- Animation presets
+- Shadow utilities
+
+---
+
+## 👤 Author
+
+**Vince Kipyegon**
+
+- GitHub: [@kipyegonline](https://github.com/kipyegonline)
+- Twitter: [@kipyegonline](https://twitter.com/kipyegonline)
+- Email: vince.kipyegon11@gmail.com
+
+---
+
+## 📄 License
+
+This project is licensed under the **0BSD License** - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Built with ❤️ for Lakeview Africa Gospel Church**
+
+_"To impart spiritual virtues, offer quality education, and develop a God-fearing generation."_
+
+</div>
