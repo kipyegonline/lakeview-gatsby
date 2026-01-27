@@ -38,19 +38,7 @@ const IndexPage = () => {
       callback({ id: 0 })
     }
   }
-  // update the metrics
-  const handleUserCount = isNew => {
-    let localUser = localStorage.getItem("localuser")
 
-    if (localUser === null) {
-      localStorage.setItem("localuser", v4())
-      localUser = localStorage.getItem("localuser")
-    }
-
-    fetch(
-      `./server/fasting.php?recorduser=true&uuid=${localUser}&newuser=${isNew}`,
-    )
-  }
   // the thing with fasting
   const handleUserDate = (e, p) => {
     if (p < 10 || p > 30) return
@@ -65,30 +53,7 @@ const IndexPage = () => {
       fetchData(url1, setFast)
     }
   }
-  // fasting metrics
-  const recordMetrics = () => {
-    let day = 6e4 * 60 * 24
-    let now = new Date().getTime()
-    let prayerday = localStorage.getItem("prayerday")
 
-    if (prayerday) {
-      if (now - Number(prayerday) > day) {
-        localStorage.setItem("prayerday", JSON.stringify(now))
-
-        handleUserCount(0)
-      }
-    } else {
-      // also record on server...
-      handleUserCount(1)
-
-      // show dialog
-      localStorage.setItem("prayerday", JSON.stringify(now))
-    }
-  }
-  // close modal
-  const closeModal = () => {
-    setOpen(false)
-  }
   // Events happening
   const fetchEvents = (month = "") => {
     setLoader(true)
@@ -105,20 +70,6 @@ const IndexPage = () => {
         console.log(error)
       })
   }
-
-  // new Year theme
-  const newYearTheme = () => {
-    const currentYear = new Date().getFullYear()
-    const newYearMessage = localStorage.getItem(`new-year-${currentYear}`)
-    if (!!!newYearMessage && new Date().getMonth() === 0) {
-      setOpen(true)
-      localStorage.setItem(`new-year-${currentYear}`, "visited")
-      localStorage.removeItem(`new-year-${currentYear - 1}`, "visited")
-    }
-  }
-  React.useEffect(() => {
-    setTimeout(newYearTheme, 3000)
-  }, [])
 
   return (
     <Layout>
@@ -143,36 +94,6 @@ const IndexPage = () => {
 
 export default IndexPage
 
-const UseModal = ({
-  children,
-  title = "Lakeview AGC",
-  open = true,
-  setOpen,
-  welcome,
-}) => {
-  return (
-    <Dialog
-      title={title}
-      open={open}
-      onClose={() => setOpen(false)}
-      fullWidth
-      maxWidth="sm"
-    >
-      <DialogTitle>{welcome}</DialogTitle>
-      <DialogContent dividers>{children}</DialogContent>
-      <DialogActions>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setOpen(false)}
-          autoFocus
-        >
-          Close
-        </Button>
-      </DialogActions>
-    </Dialog>
-  )
-}
 /*
 
 const skills = [
@@ -225,4 +146,3 @@ console.log(
   "font-family:cursive;font-size:2rem;color:purple; word-spacing:10px",
   "font-weight:bold; font-family:cursive;font-size:2rem;color:purple; letter-spacing:10px",
 )
-const calendar = ["January", "February", "March"]
