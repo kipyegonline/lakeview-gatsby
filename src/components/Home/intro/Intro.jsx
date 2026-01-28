@@ -105,7 +105,7 @@ const Intro = ({ churcharea = [] }) => {
               <ServiceTimeCard
                 icon="🌟"
                 title="Second Service"
-                time="10:00 - 11:30 AM"
+                time="10:00 - 12:00 PM"
                 delay="100"
               />
               <ServiceTimeCard

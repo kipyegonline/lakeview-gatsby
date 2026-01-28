@@ -100,7 +100,9 @@ const Footer = () => {
             <div className="footer-services">
               <div className="footer-service-item">
                 <span className="footer-service-day">Sunday</span>
-                <span className="footer-service-time">9:30 AM - 11:30 AM</span>
+                <span className="footer-service-time">
+                  8:30 AM - 11:30 AM | 10:00 AM -12:00PM
+                </span>
               </div>
               <div className="footer-service-item">
                 <span className="footer-service-day">Wednesday</span>
