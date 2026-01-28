@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react"
 
 import delo from "../../images/assets/img/pstdelton.jpg"
+import wycleff from "../../images/assets/img/wycliff.jpeg"
 import rachael from "../../images/assets/img/newlcc/IMG-20200813-WA0000.jpg"
 
 // Custom hook for fade-in animation on scroll
@@ -223,5 +224,11 @@ const pastors = [
     title: "Pastor",
     pic: rachael,
     des: "Children, Missions, Evangelism and Compassion.",
+  },
+  {
+    name: "Pastor Wycliff and Purity Ngase",
+    title: "Youth Pastor",
+    pic: wycleff,
+    des: "Youth and Young Adults.",
   },
 ]
