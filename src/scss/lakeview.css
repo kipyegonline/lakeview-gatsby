@@ -1,5 +1,3 @@
-/*$secondary: #ddd;
-$footer: #ccc;*/
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 .footer-bg {
@@ -135,7 +133,9 @@ h5 {
   color: black;
   font-weight: normal;
   border-radius: 1rem;
-  box-shadow: -2px -2px 5px purple, 2px 2px 5px purple;
+  box-shadow:
+    -2px -2px 5px purple,
+    2px 2px 5px purple;
 }
 
 .fee:hover {

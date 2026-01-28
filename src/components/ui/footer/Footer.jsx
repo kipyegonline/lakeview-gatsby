@@ -76,11 +76,21 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-section-title">Quick Links</h4>
             <nav className="footer-nav">
-              <Link to="/" className="footer-nav-link">Home</Link>
-              <Link to="/about-lakeview-agc" className="footer-nav-link">About Us</Link>
-              <Link to="/services" className="footer-nav-link">Sermons</Link>
-              <Link to="/lakeview-academy" className="footer-nav-link">Academy</Link>
-              <Link to="/get-in-touch" className="footer-nav-link">Contact</Link>
+              <Link to="/" className="footer-nav-link">
+                Home
+              </Link>
+              <Link to="/about-lakeview-agc" className="footer-nav-link">
+                About Us
+              </Link>
+              <Link to="/services" className="footer-nav-link">
+                Sermons
+              </Link>
+              <Link to="/lakeview-academy" className="footer-nav-link">
+                Academy
+              </Link>
+              <Link to="/get-in-touch" className="footer-nav-link">
+                Contact
+              </Link>
             </nav>
           </div>
 
@@ -90,7 +100,7 @@ const Footer = () => {
             <div className="footer-services">
               <div className="footer-service-item">
                 <span className="footer-service-day">Sunday</span>
-                <span className="footer-service-time">9:30 AM - 12:30 PM</span>
+                <span className="footer-service-time">9:30 AM - 11:30 AM</span>
               </div>
               <div className="footer-service-item">
                 <span className="footer-service-day">Wednesday</span>
@@ -108,15 +118,27 @@ const Footer = () => {
             <h4 className="footer-section-title">Contact Us</h4>
             <div className="footer-contact">
               <a href="tel:+254797438190" className="footer-contact-item">
-                <FontAwesomeIcon icon={faPhone} className="footer-contact-icon" />
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="footer-contact-icon"
+                />
                 <span>+254 797 438 190</span>
               </a>
-              <a href="mailto:info@lakeviewagc.net" className="footer-contact-item">
-                <FontAwesomeIcon icon={faEnvelope} className="footer-contact-icon" />
+              <a
+                href="mailto:info@lakeviewagc.net"
+                className="footer-contact-item"
+              >
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="footer-contact-icon"
+                />
                 <span>info@lakeviewagc.net</span>
               </a>
               <div className="footer-contact-item">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="footer-contact-icon" />
+                <FontAwesomeIcon
+                  icon={faMapMarkerAlt}
+                  className="footer-contact-icon"
+                />
                 <span>Nakuru, Kenya</span>
               </div>
             </div>
@@ -130,7 +152,6 @@ const Footer = () => {
           <p className="footer-copyright-text">
             © {currentYear} Lakeview Africa Gospel Church. All rights reserved.
           </p>
-        
         </div>
       </div>
     </footer>
