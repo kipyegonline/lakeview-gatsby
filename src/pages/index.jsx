@@ -25,9 +25,8 @@ const IndexPage = () => {
   )
   const [open, setOpen] = React.useState(false)
   const [selected, setSelected] = React.useState(date)
-  const [greeted, setGreeted] = React.useState(false)
+
   const [loader, setLoader] = React.useState(false)
-  const month = new Date().getMonth()
 
   const fetchData = async (url, callback) => {
     try {
